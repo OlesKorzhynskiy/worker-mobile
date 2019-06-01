@@ -25,7 +25,7 @@
                                         <StackLayout Margin="10, 0, 0, 0" Spacing="2">
                                             <Label Text="{Binding Reviewer.FirstName}" FontSize="Small" TextColor="{StaticResource TextColor}" />
                                             <Label Text="{Binding Reviewer.City}" FontSize="Small" TextColor="{StaticResource TextColor}" />
-                                            <Label Text="{Binding Date, Converter={StaticResource DateTimeConverter}}" FontSize="Micro" TextColor="{StaticResource TextColor}" />
+                                            <Label Text="{Binding Date, Converter={StaticResource DateTimeConverter}, ConverterParameter='D'}" FontSize="Micro" TextColor="{StaticResource TextColor}" />
                                         </StackLayout>
                                         <laavorRatingSwap:RatingImage Margin="0, 0, 0, 5" VerticalOptions="Start" InitialValue="{Binding Rating}" IsReadOnly="True" ImageWidth="10" ImageHeight="10" ItemsNumber="5" ImageSelect="starYellow.png" ImageDeselect="starWhite.gif" SpaceBetween="1" HorizontalOptions="EndAndExpand" />
                                     </StackLayout>

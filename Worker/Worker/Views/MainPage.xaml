@@ -15,5 +15,13 @@
                 <employee:EmployeeProfilePage />
             </x:Arguments>
         </NavigationPage>
+        <NavigationPage Title="Доска">
+            <NavigationPage.Icon>
+                <FileImageSource File="profile.png"></FileImageSource>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <employee:DashboardTabbedPage />
+            </x:Arguments>
+        </NavigationPage>
     </TabbedPage.Children>
 </TabbedPage>

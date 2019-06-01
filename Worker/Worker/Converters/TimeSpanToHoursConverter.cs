@@ -4,11 +4,11 @@ using Xamarin.Forms;
 
 namespace Worker.Converters
 {
-    public class DateTimeConverter : IValueConverter
+    public class TimeSpanToHoursConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((DateTime)value).ToString(parameter.ToString());
+            return ((TimeSpan)value).Hours;
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
