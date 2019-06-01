@@ -52,26 +52,28 @@
                                 </StackLayout>
 
                                 <!-- New -->
-                                <Button IsVisible="{Binding IsNew}" Text="Податися" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2, 1, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
-                                <Button IsVisible="{Binding IsNew}" Text="Видалити" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsNew}" Text="Податися" Command="{Binding ApplyJobCommand}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2, 1, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsNew}" Text="Видалити" Command="{Binding RemoveJobCommand}" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
 
                                 <!-- WaitingForEmployerConfirmation -->
-                                <Button IsVisible="{Binding IsWaitingForEmployerConfirmation}" Text="Відхилити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsWaitingForEmployerConfirmation}" Command="{Binding RejectJobCommand}" Text="Відхилити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
 
                                 <!-- WaitingForEmployeeConfirmation -->
-                                <Button IsVisible="{Binding IsWaitingForEmployeeConfirmation}" Text="Підтвердити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2, 1, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
-                                <Button IsVisible="{Binding IsWaitingForEmployeeConfirmation}" Text="Відхилити" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsWaitingForEmployeeConfirmation}" Command="{Binding AcceptJobCommand}" Text="Підтвердити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2, 1, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsWaitingForEmployeeConfirmation}" Command="{Binding RejectJobCommand}" Text="Відхилити" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
 
                                 <!-- IsRejectedByEmployer -->
-                                <Button IsVisible="{Binding IsRejectedByEmployer}" Text="Видалити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsRejectedByEmployer}" Command="{Binding RemoveJobCommand}" Text="Видалити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
 
                                 <!-- RejectedByEmployee -->
-                                <Button IsVisible="{Binding IsRejectedByEmployee}" Text="Податися знову" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2, 1, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
-                                <Button IsVisible="{Binding IsRejectedByEmployee}" Text="Видалити" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsRejectedByEmployee}" Command="{Binding ApplyJobCommand}" Text="Податися знову" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2, 1, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsRejectedByEmployee}" Command="{Binding RemoveJobCommand}" Text="Видалити" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
 
                                 <!-- Done -->
                                 <Button IsVisible="{Binding IsDone}" Text="Залишити відгук" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
 
+                                <!-- Removed -->
+                                <Button IsVisible="{Binding IsRemoved}" Command="{Binding ReturnJobCommand}" Text="Відновити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
                             </Grid.Children>
                         </Grid>
                     </ViewCell>

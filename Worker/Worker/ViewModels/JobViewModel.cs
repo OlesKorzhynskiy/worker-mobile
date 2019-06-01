@@ -1,11 +1,23 @@
 ﻿using System;
+using System.Windows.Input;
+using AutoMapper;
 using Worker.Enums;
 using Worker.Models;
+using Worker.Services;
+using Xamarin.Forms;
 
 namespace Worker.ViewModels
 {
     public class JobViewModel : BaseViewModel
     {
+        public JobViewModel()
+        {
+            RemoveJobCommand = new Command(RemoveJob);
+            ApplyJobCommand = new Command(ApplyJob);
+            RejectJobCommand = new Command(RejectJob);
+            AcceptJobCommand = new Command(AcceptJob);
+            ReturnJobCommand = new Command(ReturnJob);
+        }
         private int _id;
         public int Id
         {
@@ -105,7 +117,7 @@ namespace Worker.ViewModels
             }
         }
 
-        // statuses
+        // Statuses
         public bool IsNew => Status == StatusEnum.WaitingForEmployee;
         public bool IsWaitingForEmployerConfirmation => Status == StatusEnum.WaitingForEmployerConfirmation;
         public bool IsWaitingForEmployeeConfirmation => Status == StatusEnum.WaitingForEmployeeConfirmation;
@@ -113,6 +125,59 @@ namespace Worker.ViewModels
         public bool IsRejectedByEmployee => Status == StatusEnum.RejectedByEmployee;
         public bool IsInProgress => Status == StatusEnum.InProgress;
         public bool IsDone => Status == StatusEnum.Done;
+        public bool IsRemoved => Status == StatusEnum.Removed;
 
+        // Commands
+        public ICommand RemoveJobCommand { get; }
+        private void RemoveJob()
+        {
+            JobsService.Remove(Id);
+            Status = StatusEnum.Removed;
+            UpdateView();
+        }
+
+        public ICommand ApplyJobCommand { get; }
+        private void ApplyJob()
+        {
+            JobsService.Apply(Id);
+            Status = StatusEnum.WaitingForEmployerConfirmation;
+            UpdateView();
+        }
+
+        public ICommand RejectJobCommand { get; }
+        private void RejectJob()
+        {
+            JobsService.RejectByEmployee(Id);
+            Status = StatusEnum.RejectedByEmployee;
+            UpdateView();
+        }
+
+        public ICommand AcceptJobCommand { get; }
+        private void AcceptJob()
+        {
+            JobsService.AcceptByEmployee(Id);
+            Status = StatusEnum.InProgress;
+            UpdateView();
+        }
+
+        public ICommand ReturnJobCommand { get; }
+        private void ReturnJob()
+        {
+            JobsService.Return(Id);
+            Status = StatusEnum.WaitingForEmployee;
+            UpdateView();
+        }
+
+        private void UpdateView()
+        {
+            OnPropertyChanged($"IsNew");
+            OnPropertyChanged($"IsWaitingForEmployerConfirmation");
+            OnPropertyChanged($"IsWaitingForEmployeeConfirmation");
+            OnPropertyChanged($"IsRejectedByEmployer");
+            OnPropertyChanged($"IsRejectedByEmployee");
+            OnPropertyChanged($"IsInProgress");
+            OnPropertyChanged($"IsDone");
+            OnPropertyChanged($"IsRemoved");
+        }
     }
 }
