@@ -2,9 +2,9 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:employee="clr-namespace:Worker.Views.Employee"
-             x:Class="Worker.Views.Employee.DashboardTabbedPage"
+             x:Class="Worker.Views.Employee.EmployeeDashboardTabbedPage"
              NavigationPage.HasNavigationBar="False">
-    <employee:AllJobsPage Title="Всі" />
-    <employee:AllJobsPage Title="Мої" />
-    <employee:AllJobsPage Title="Історія" />
+    <employee:EmployeeNewJobsPage Title="Нові" />
+    <employee:EmployeeMyJobsPage Title="Мої" />
+    <employee:EmployeeDoneJobsPage Title="Історія" />
 </TabbedPage>

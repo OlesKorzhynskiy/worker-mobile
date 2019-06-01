@@ -13,18 +13,18 @@ using Xamarin.Forms.Xaml;
 namespace Worker.Views.Employee
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AllJobsPage : ContentPage
+	public partial class EmployeeDoneJobsPage : ContentPage
 	{
-		public AllJobsPage ()
-		{
-			InitializeComponent ();
+        public EmployeeDoneJobsPage()
+        {
+            InitializeComponent();
 
-            BindingContext = Mapper.Map<ObservableCollection<JobViewModel>>(JobsService.GetAll());
+            BindingContext = Mapper.Map<ObservableCollection<JobViewModel>>(JobsService.GetDone());
         }
 
         protected override void OnAppearing()
         {
-            BindingContext = Mapper.Map<ObservableCollection<JobViewModel>>(JobsService.GetAll());
+            BindingContext = Mapper.Map<ObservableCollection<JobViewModel>>(JobsService.GetDone());
         }
     }
 }

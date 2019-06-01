@@ -5,7 +5,10 @@
         WaitingForEmployee,
         WaitingForEmployerConfirmation,
         WaitingForEmployeeConfirmation,
+        RejectedByEmployer,
+        RejectedByEmployee,
         InProgress,
-        Done
+        Done,
+        Removed
     }
 }

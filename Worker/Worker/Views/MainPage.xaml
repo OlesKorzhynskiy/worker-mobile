@@ -7,20 +7,20 @@
             xmlns:employee="clr-namespace:Worker.Views.Employee"
             android:TabbedPage.ToolbarPlacement="Bottom">
     <TabbedPage.Children>
+        <NavigationPage Title="Доска">
+            <NavigationPage.Icon>
+                <FileImageSource File="profile.png"></FileImageSource>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <employee:EmployeeDashboardTabbedPage />
+            </x:Arguments>
+        </NavigationPage>
         <NavigationPage Title="Профайл">
             <NavigationPage.Icon>
                 <FileImageSource File="profile.png"></FileImageSource>
             </NavigationPage.Icon>
             <x:Arguments>
                 <employee:EmployeeProfilePage />
-            </x:Arguments>
-        </NavigationPage>
-        <NavigationPage Title="Доска">
-            <NavigationPage.Icon>
-                <FileImageSource File="profile.png"></FileImageSource>
-            </NavigationPage.Icon>
-            <x:Arguments>
-                <employee:DashboardTabbedPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>

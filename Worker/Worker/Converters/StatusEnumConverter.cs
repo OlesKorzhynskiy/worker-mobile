@@ -21,10 +21,16 @@ namespace Worker.Converters
                     return "Очікується підтвердження роботодавця";
                 case StatusEnum.WaitingForEmployeeConfirmation:
                     return "Очікується підтвердження працівника";
+                case StatusEnum.RejectedByEmployer:
+                    return "Відхилено роботодавцем";
+                case StatusEnum.RejectedByEmployee:
+                    return "Відхилено працівником";
                 case StatusEnum.InProgress:
                     return "Виконується";
                 case StatusEnum.Done:
                     return "Завершено";
+                case StatusEnum.Removed:
+                    return "Видалена";
             }
 
             throw new Exception("Not known status: " + ((StatusEnum)value));

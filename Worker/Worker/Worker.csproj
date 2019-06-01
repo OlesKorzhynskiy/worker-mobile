@@ -22,8 +22,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\Employee\EmployeeDashboardTabbedPage.xaml.cs">
+      <DependentUpon>EmployeeDashboardTabbedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Employee\EmployeeNewJobsPage.xaml.cs">
+      <DependentUpon>EmployeeNewJobsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Employee\EmployeeProfilePage.xaml.cs">
       <DependentUpon>EmployeeProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Employee\EmployeeMyJobsPage.xaml.cs">
+      <DependentUpon>EmployeeMyJobsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Employee\EmployeeDoneJobsPage.xaml.cs">
+      <DependentUpon>EmployeeDoneJobsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -34,16 +46,22 @@
     <EmbeddedResource Update="Views\AddJobTypesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Employee\AllJobsPage.xaml">
+    <EmbeddedResource Update="Views\Employee\EmployeeNewJobsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Employee\DashboardTabbedPage.xaml">
+    <EmbeddedResource Update="Views\Employee\EmployeeDashboardTabbedPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Employee\EmployeeEditProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Employee\EmployeeProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Employee\EmployeeMyJobsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Employee\EmployeeDoneJobsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ReviewsPage.xaml">

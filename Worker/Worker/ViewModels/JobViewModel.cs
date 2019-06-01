@@ -104,5 +104,15 @@ namespace Worker.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        // statuses
+        public bool IsNew => Status == StatusEnum.WaitingForEmployee;
+        public bool IsWaitingForEmployerConfirmation => Status == StatusEnum.WaitingForEmployerConfirmation;
+        public bool IsWaitingForEmployeeConfirmation => Status == StatusEnum.WaitingForEmployeeConfirmation;
+        public bool IsRejectedByEmployer => Status == StatusEnum.RejectedByEmployer;
+        public bool IsRejectedByEmployee => Status == StatusEnum.RejectedByEmployee;
+        public bool IsInProgress => Status == StatusEnum.InProgress;
+        public bool IsDone => Status == StatusEnum.Done;
+
     }
 }

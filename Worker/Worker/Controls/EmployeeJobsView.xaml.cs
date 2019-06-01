@@ -16,5 +16,13 @@ namespace Worker.Controls
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                ((ListView)sender).SelectedItem = null;
+            }
+        }
+    }
 }

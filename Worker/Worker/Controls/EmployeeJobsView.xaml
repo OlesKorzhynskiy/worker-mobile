@@ -8,11 +8,18 @@
             <converters:DateTimeConverter x:Key="DateTimeConverter" />
             <converters:TimeSpanToHoursConverter x:Key="TimeSpanToHoursConverter" />
             <converters:StatusEnumConverter x:Key="StatusEnumConverter" />
+            <Style x:Key="ButtonGeneralStyles" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="LightGray"/>
+                <Setter Property="HeightRequest" Value="25" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
         </ResourceDictionary>
     </ContentView.Resources>
 
     <ContentView.Content>
-        <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="100">
+        <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="110" ItemSelected="ListView_OnItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -44,8 +51,26 @@
                                     <Label Text="{Binding Status, Converter={StaticResource StatusEnumConverter}, StringFormat='Статус: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro"/>
                                 </StackLayout>
 
-                                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="LightGray" Margin="2, 1, 1, 2" Text="Податися" HeightRequest="25" Padding="0" TextColor="{StaticResource TextColor}" FontSize="Small"></Button>
-                                <Button Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" BackgroundColor="LightGray" Margin="1, 1, 2, 2" Text="Відхилити" HeightRequest="25" Padding="0" TextColor="{StaticResource TextColor}" FontSize="Small"></Button>
+                                <!-- New -->
+                                <Button IsVisible="{Binding IsNew}" Text="Податися" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2, 1, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsNew}" Text="Видалити" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+
+                                <!-- WaitingForEmployerConfirmation -->
+                                <Button IsVisible="{Binding IsWaitingForEmployerConfirmation}" Text="Відхилити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+
+                                <!-- WaitingForEmployeeConfirmation -->
+                                <Button IsVisible="{Binding IsWaitingForEmployeeConfirmation}" Text="Підтвердити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2, 1, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsWaitingForEmployeeConfirmation}" Text="Відхилити" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+
+                                <!-- IsRejectedByEmployer -->
+                                <Button IsVisible="{Binding IsRejectedByEmployer}" Text="Видалити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+
+                                <!-- RejectedByEmployee -->
+                                <Button IsVisible="{Binding IsRejectedByEmployee}" Text="Податися знову" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2, 1, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsRejectedByEmployee}" Text="Видалити" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+
+                                <!-- Done -->
+                                <Button IsVisible="{Binding IsDone}" Text="Залишити відгук" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
 
                             </Grid.Children>
                         </Grid>

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Worker.Views.Employee
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DashboardTabbedPage : TabbedPage
+    public partial class EmployeeDashboardTabbedPage : TabbedPage
     {
-        public DashboardTabbedPage ()
+        public EmployeeDashboardTabbedPage()
         {
             InitializeComponent();
         }
