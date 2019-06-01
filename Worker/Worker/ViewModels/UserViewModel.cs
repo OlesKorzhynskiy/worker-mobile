@@ -26,6 +26,17 @@ namespace Worker.ViewModels
             }
         }
 
+        private string _photo;
+        public string Photo
+        {
+            get => _photo;
+            set
+            {
+                _photo = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string _city;
         public string City
         {
@@ -59,6 +70,17 @@ namespace Worker.ViewModels
             }
         }
 
+        private string _averageRating;
+        public string AverageRating
+        {
+            get => _averageRating;
+            set
+            {
+                _averageRating = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ObservableCollection<ReviewViewModel> _receivedReviews;
         public ObservableCollection<ReviewViewModel> ReceivedReviews
         {
@@ -69,5 +91,10 @@ namespace Worker.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        // additional properties
+        public string UserName => FirstName + " " + LastName;
+
+        public string CityAge => City + ", " + Age;
     }
 }

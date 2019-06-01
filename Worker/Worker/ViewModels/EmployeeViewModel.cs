@@ -2,7 +2,7 @@
 
 namespace Worker.ViewModels
 {
-    public class EmployeeViewModel : BaseViewModel
+    public class EmployeeViewModel : UserViewModel
     {
         private string _aboutMe;
         public string AboutMe

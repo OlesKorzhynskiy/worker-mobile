@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AutoMapper;
+using Worker.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +16,16 @@ namespace Worker.Views.Employee
 		public ProfilePage ()
 		{
 			InitializeComponent ();
-		}
-	}
+
+            BindingContext = Mapper.Map<EmployeeViewModel>(App.User);
+        }
+
+        private void ListView_RemoveSelectedStyles(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                ((ListView)sender).SelectedItem = null;
+            }
+        }
+    }
 }

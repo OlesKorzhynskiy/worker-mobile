@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Worker.Models
 {
-    class Employee
+    public class EmployeeModel : UserModel
     {
         public string AboutMe { get; set; }
-        public List<JobType> JobTypes { get; set; }
+        public List<JobTypeModel> JobTypes { get; set; }
     }
 }

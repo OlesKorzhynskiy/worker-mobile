@@ -7,6 +7,7 @@
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Color x:Key="TextColor">Black</Color>
+            <Thickness x:Key="StandartPagePadding" Left="10" Right="10" Top="10" Bottom="10"></Thickness>
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
