@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:laavorRatingSwap="clr-namespace:LaavorRatingSwap;assembly=RatingAndSwap"
+             x:Class="Worker.Views.Employee.ProfilePage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.Children>
+                <StackLayout Grid.Row="0" Orientation="Horizontal">
+                    <controls:CircleImage Source="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png" />
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Oles Korzhynskiy" TextColor="{StaticResource TextColor}" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+                        <laavorRatingSwap:RatingImage BlockSelect="True" ImageWidth="20" ImageHeight="20" ItemsNumber="5" ImageSelect="starYellow.png" ImageDeselect="starWhite.gif" SpaceBetween="4" HorizontalOptions="Start" Margin="0, 0, 0, 20" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid.Children>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
