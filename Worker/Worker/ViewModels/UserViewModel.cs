@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 
 namespace Worker.ViewModels
 {
@@ -59,16 +60,16 @@ namespace Worker.ViewModels
             }
         }
 
-        private string _age;
-        public string Age
+        private DateTime _birthDate;
+        public DateTime BirthDate
         {
-            get => _age;
+            get => _birthDate;
             set
             {
-                _age = value;
+                _birthDate = value;
                 OnPropertyChanged();
             }
-        }
+        }        
 
         private string _averageRating;
         public string AverageRating
@@ -93,8 +94,23 @@ namespace Worker.ViewModels
         }
 
         // additional properties
+        public int Age
+        {
+            get
+            {
+                var today = DateTime.Today;
+                var age = today.Year - BirthDate.Year;
+                // Go back to the year the person was born in case of a leap year
+                if (BirthDate.Date > today.AddYears(-age))
+                {
+                    age--;
+                }
+                return age;
+            }
+        }
+
         public string UserName => FirstName + " " + LastName;
 
-        public string CityAge => City + ", " + Age;
+        public string CityAndAge => City + ", " + Age;
     }
 }

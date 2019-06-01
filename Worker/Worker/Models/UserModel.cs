@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Worker.Models
 {
@@ -9,7 +10,7 @@ namespace Worker.Models
         public string Photo { get; set; }
         public string City { get; set; }
         public string Phone { get; set; }
-        public int Age { get; set; }
+        public DateTime BirthDate { get; set; }
         public int AverageRating { get; set; }
         
         public List<ReviewModel> ReceivedReviews { get; set; }

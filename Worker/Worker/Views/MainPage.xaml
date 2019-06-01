@@ -12,7 +12,7 @@
                 <FileImageSource File="profile.png"></FileImageSource>
             </NavigationPage.Icon>
             <x:Arguments>
-                <employee:ProfilePage />
+                <employee:EmployeeProfilePage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
