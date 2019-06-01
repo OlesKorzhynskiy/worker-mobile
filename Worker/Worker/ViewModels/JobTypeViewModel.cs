@@ -23,5 +23,16 @@
                 OnPropertyChanged();
             }
         }
+
+        private bool _isChecked;
+        public bool IsChecked
+        {
+            get => _isChecked;
+            set
+            {
+                _isChecked = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }

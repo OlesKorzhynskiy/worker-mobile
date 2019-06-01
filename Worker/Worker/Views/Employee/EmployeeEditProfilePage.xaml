@@ -38,7 +38,7 @@
                     </ListView>
                 </StackLayout>
 
-                <Image Source="add.png" HorizontalOptions="Start"/>
+                <Image x:Name="AddJobTypeImage" Source="add.png" HorizontalOptions="Start"/>
 
                 <!-- Save -->
                 <Button Text="Оновити профайл" Margin="0, 10, 0, 0" FontSize="Medium" TextColor="{StaticResource TextColor}" Clicked="OnSaveProfile"/>
