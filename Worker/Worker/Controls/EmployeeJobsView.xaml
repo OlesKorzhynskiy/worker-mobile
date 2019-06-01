@@ -2,7 +2,8 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:Worker.Converters"
-             x:Class="Worker.Controls.EmployeeJobsView">
+             x:Class="Worker.Controls.EmployeeJobsView"
+             x:Name="EmployeeJobsPage">
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:DateTimeConverter x:Key="DateTimeConverter" />
@@ -70,7 +71,7 @@
                                 <Button IsVisible="{Binding IsRejectedByEmployee}" Command="{Binding RemoveJobCommand}" Text="Видалити" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
 
                                 <!-- Done -->
-                                <Button IsVisible="{Binding IsDone}" Text="Залишити відгук" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                                <Button IsVisible="{Binding IsDone}" Command="{Binding AddReviewCommand, Source={x:Reference EmployeeJobsPage}}" CommandParameter="{Binding Id}" Text="Залишити відгук" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
 
                                 <!-- Removed -->
                                 <Button IsVisible="{Binding IsRemoved}" Command="{Binding ReturnJobCommand}" Text="Відновити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />

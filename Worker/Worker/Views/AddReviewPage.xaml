@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:laavorRatingSwap="clr-namespace:LaavorRatingSwap;assembly=RatingAndSwap"
+             x:Class="Worker.Views.AddReviewPage"
+             Title="Додати відгук">
+    <ContentPage.Content>
+        <StackLayout Padding="{StaticResource StandartPagePadding}" Spacing="0">
+            <Label Text="Як ви оцінюєте співпрацю?" FontSize="Medium" TextColor="{StaticResource TextColor}" />
+            <laavorRatingSwap:RatingImage OnSelect="RatingImage_OnSelect" ImageWidth="20" ImageHeight="20" ItemsNumber="5" ImageSelect="starYellow.png" ImageDeselect="starWhite.gif" SpaceBetween="4" HorizontalOptions="Start" Margin="0, 0, 0, 20" />
+            <Label Text="Ваш відгук:" FontSize="Small" TextColor="{StaticResource TextColor}" />
+            <Editor Text="{Binding Text}" FontSize="Small" TextColor="{StaticResource TextColor}" HeightRequest="100" />
+            <Button Text="Зберегти" FontSize="Small" TextColor="{StaticResource TextColor}" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Clicked="OnAddReviewClick" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

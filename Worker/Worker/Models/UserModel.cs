@@ -5,6 +5,11 @@ namespace Worker.Models
 {
     public class UserModel
     {
+        public UserModel()
+        {
+            ReceivedReviews = new List<ReviewModel>();
+        }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Photo { get; set; }

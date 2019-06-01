@@ -116,6 +116,15 @@ namespace Worker.Services
             return Jobs.Where(job => job.Status == StatusEnum.Done).ToList();
         }
 
+        public static void AddReview(int id, ReviewModel review)
+        {
+            var job = Jobs.First(j => j.Id == id);
+            if (job != null)
+            {
+                job.Employer.ReceivedReviews.Add(review);
+            }
+        }
+
         public static void Remove(int id)
         {
             var job = Jobs.First(j => j.Id == id);
