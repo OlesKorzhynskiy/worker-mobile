@@ -4,8 +4,12 @@ using Worker.Enums;
 
 namespace Worker.Models
 {
-    public class JobModel
+    public class EmployerJobModel
     {
+        public EmployerJobModel()
+        {
+            Employees = new List<JobUserModel>();
+        }
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -20,8 +24,8 @@ namespace Worker.Models
 
         public TimeSpan Duration { get; set; }
 
-        public StatusEnum Status { get; set; }
-
         public EmployerModel Employer { get; set; }
+
+        public List<JobUserModel> Employees { get; set; }
     }
 }

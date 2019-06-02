@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AutoMapper;
-using Worker.Enums;
 using Worker.Models;
 using Worker.Services;
 using Worker.ViewModels;
@@ -16,8 +15,8 @@ using Xamarin.Forms.Xaml;
 namespace Worker.Controls
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class EmployeeJobsView : ContentView
-    {
+	public partial class EmployerJobsView : ContentView
+	{
         private int currentJobId;
 
         public ICommand AddReviewCommand { get; }
@@ -29,7 +28,7 @@ namespace Worker.Controls
             Navigation.PushAsync(addReviewPage);
         }
 
-        public EmployeeJobsView ()
+        public EmployerJobsView ()
 		{
 			InitializeComponent ();
 

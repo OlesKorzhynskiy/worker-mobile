@@ -6,15 +6,15 @@ using Worker.Models;
 
 namespace Worker.Services
 {
-    public static class JobsService
+    public static class EmployeeJobsService
     {
-        public static List<JobModel> Jobs { get; set; }
+        public static List<EmployeeJobModel> Jobs { get; set; }
 
-        static JobsService()
+        static EmployeeJobsService()
         {
-            Jobs = new List<JobModel>()
+            Jobs = new List<EmployeeJobModel>()
             {
-                new JobModel() {Id = 0, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now, 
+                new EmployeeJobModel() {Id = 0, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now, 
                     Employer = new EmployerModel()
                     {
                         AverageRating = 4,
@@ -26,7 +26,7 @@ namespace Worker.Services
                         Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.WaitingForEmployee, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
-                new JobModel() {Id = 1, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
+                new EmployeeJobModel() {Id = 1, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
                     Employer = new EmployerModel()
                     {
                         AverageRating = 4,
@@ -38,7 +38,7 @@ namespace Worker.Services
                         Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.WaitingForEmployerConfirmation, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
-                new JobModel() {Id = 2, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
+                new EmployeeJobModel() {Id = 2, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
                     Employer = new EmployerModel()
                     {
                         AverageRating = 4,
@@ -50,7 +50,7 @@ namespace Worker.Services
                         Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.WaitingForEmployeeConfirmation, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
-                new JobModel() {Id = 3, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
+                new EmployeeJobModel() {Id = 3, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
                     Employer = new EmployerModel()
                     {
                         AverageRating = 4,
@@ -62,7 +62,7 @@ namespace Worker.Services
                         Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.RejectedByEmployer, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
-                new JobModel() {Id = 4, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
+                new EmployeeJobModel() {Id = 4, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
                     Employer = new EmployerModel()
                     {
                         AverageRating = 4,
@@ -74,7 +74,7 @@ namespace Worker.Services
                         Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.RejectedByEmployee, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
-                new JobModel() {Id = 5, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
+                new EmployeeJobModel() {Id = 5, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
                     Employer = new EmployerModel()
                     {
                         AverageRating = 4,
@@ -86,7 +86,7 @@ namespace Worker.Services
                         Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.InProgress, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
-                new JobModel() {Id = 6, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
+                new EmployeeJobModel() {Id = 6, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
                     Employer = new EmployerModel()
                     {
                         AverageRating = 4,
@@ -101,17 +101,17 @@ namespace Worker.Services
             };
         }
 
-        public static List<JobModel> GetNew()
+        public static List<EmployeeJobModel> GetNew()
         {
             return Jobs.Where(job => job.Status == StatusEnum.WaitingForEmployee).ToList();
         }
 
-        public static List<JobModel> GetMy()
+        public static List<EmployeeJobModel> GetMy()
         {
             return Jobs.Where(job => job.Status != StatusEnum.WaitingForEmployee && job.Status != StatusEnum.Done && job.Status != StatusEnum.Removed).ToList();
         }
 
-        public static List<JobModel> GetDone()
+        public static List<EmployeeJobModel> GetDone()
         {
             return Jobs.Where(job => job.Status == StatusEnum.Done).ToList();
         }

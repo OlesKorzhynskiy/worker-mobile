@@ -38,6 +38,12 @@ namespace Worker.Views
 
             if (IsEmployer)
             {
+                var dashboardPage = new NavigationPage(new EmployerDashboardTabbedPage())
+                {
+                    Icon = new FileImageSource() { File = "profile.png" },
+                    Title = "Доска"
+                };
+                TabbedPageMenu.Children.Add(dashboardPage);
                 var profilePage = new NavigationPage(new EmployerProfilePage())
                 {
                     Icon = new FileImageSource() { File = "profile.png" },

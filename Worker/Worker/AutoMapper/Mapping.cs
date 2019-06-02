@@ -10,8 +10,17 @@ namespace Worker.AutoMapper
         {
             Mapper.Initialize(config =>
             {
+                config.CreateMap<EmployeeJobModel, EmployeeJobViewModel>();
+                config.CreateMap<EmployeeJobViewModel, EmployeeJobModel>();
+
                 config.CreateMap<EmployeeModel, EmployeeViewModel>();
                 config.CreateMap<EmployeeViewModel, EmployeeModel>();
+
+                config.CreateMap<EmployerJobModel, EmployerJobViewModel>();
+                config.CreateMap<EmployerJobViewModel, EmployerJobModel>();
+
+                config.CreateMap<EmployerModel, EmployerViewModel>();
+                config.CreateMap<EmployerViewModel, EmployerModel>();
 
                 config.CreateMap<EmployeeModel, SettingsViewModel>();
                 config.CreateMap<SettingsViewModel, EmployeeModel>();
@@ -19,14 +28,11 @@ namespace Worker.AutoMapper
                 config.CreateMap<EmployerModel, SettingsViewModel>();
                 config.CreateMap<SettingsViewModel, EmployerModel>();
 
-                config.CreateMap<EmployerModel, EmployerViewModel>();
-                config.CreateMap<EmployerViewModel, EmployerModel>();
-
-                config.CreateMap<JobModel, JobViewModel>();
-                config.CreateMap<JobViewModel, JobModel>();
-
                 config.CreateMap<JobTypeModel, JobTypeViewModel>();
                 config.CreateMap<JobTypeViewModel, JobTypeModel>();
+
+                config.CreateMap<JobUserModel, JobUserViewModel>();
+                config.CreateMap<JobUserViewModel, JobUserModel>();
 
                 config.CreateMap<ReviewModel, ReviewViewModel>();
                 config.CreateMap<ReviewViewModel, ReviewModel>();

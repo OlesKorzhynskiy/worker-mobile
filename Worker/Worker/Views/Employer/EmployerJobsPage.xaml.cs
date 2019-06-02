@@ -10,21 +10,21 @@ using Worker.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Worker.Views.Employee
+namespace Worker.Views.Employer
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class EmployeeNewJobsPage : ContentPage
+	public partial class EmployerJobsPage : ContentPage
 	{
-		public EmployeeNewJobsPage()
+		public EmployerJobsPage ()
 		{
 			InitializeComponent ();
 
-            BindingContext = Mapper.Map<ObservableCollection<EmployeeJobViewModel>>(EmployeeJobsService.GetNew());
+            BindingContext = Mapper.Map<ObservableCollection<EmployerJobViewModel>>(EmployerJobsService.GetActive());
         }
 
         protected override void OnAppearing()
         {
-            BindingContext = Mapper.Map<ObservableCollection<EmployeeJobViewModel>>(EmployeeJobsService.GetNew());
+            BindingContext = Mapper.Map<ObservableCollection<EmployerJobViewModel>>(EmployerJobsService.GetActive());
         }
     }
 }
