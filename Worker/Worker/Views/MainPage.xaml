@@ -5,31 +5,7 @@
             x:Class="Worker.Views.MainPage"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             xmlns:employee="clr-namespace:Worker.Views.Employee"
-            android:TabbedPage.ToolbarPlacement="Bottom">
-    <TabbedPage.Children>
-        <NavigationPage Title="Доска">
-            <NavigationPage.Icon>
-                <FileImageSource File="profile.png"></FileImageSource>
-            </NavigationPage.Icon>
-            <x:Arguments>
-                <employee:EmployeeDashboardTabbedPage />
-            </x:Arguments>
-        </NavigationPage>
-        <NavigationPage Title="Профайл">
-            <NavigationPage.Icon>
-                <FileImageSource File="profile.png"></FileImageSource>
-            </NavigationPage.Icon>
-            <x:Arguments>
-                <employee:EmployeeProfilePage />
-            </x:Arguments>
-        </NavigationPage>
-        <NavigationPage Title="Налаштування">
-            <NavigationPage.Icon>
-                <FileImageSource File="settings.png"></FileImageSource>
-            </NavigationPage.Icon>
-            <x:Arguments>
-                <employee:EmployeeSettingsPage />
-            </x:Arguments>
-        </NavigationPage>
-    </TabbedPage.Children>
+            xmlns:employer="clr-namespace:Worker.Views.Employer"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            x:Name="TabbedPageMenu">
 </TabbedPage>

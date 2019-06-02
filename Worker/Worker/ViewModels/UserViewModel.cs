@@ -82,6 +82,17 @@ namespace Worker.ViewModels
             }
         }
 
+        private string _aboutMe;
+        public string AboutMe
+        {
+            get => _aboutMe;
+            set
+            {
+                _aboutMe = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ObservableCollection<ReviewViewModel> _receivedReviews;
         public ObservableCollection<ReviewViewModel> ReceivedReviews
         {

@@ -11,7 +11,6 @@ namespace Worker.Models
             JobTypes = new List<JobTypeModel>();
         }
 
-        public string AboutMe { get; set; }
         public List<JobTypeModel> JobTypes { get; set; }
         public bool IsVisible { get; set; }
     }

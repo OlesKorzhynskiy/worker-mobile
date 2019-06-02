@@ -17,6 +17,7 @@ namespace Worker.Models
         public string Phone { get; set; }
         public DateTime BirthDate { get; set; }
         public int AverageRating { get; set; }
+        public string AboutMe { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         
