@@ -44,6 +44,12 @@ namespace Worker.Views
                     Title = "Профайл"
                 };
                 TabbedPageMenu.Children.Add(profilePage);
+                var settingsPage = new NavigationPage(new EmployerSettingsPage())
+                {
+                    Icon = new FileImageSource() { File = "settings.png" },
+                    Title = "Налаштування"
+                };
+                TabbedPageMenu.Children.Add(settingsPage);
             }
         }
 

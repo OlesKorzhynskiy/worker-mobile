@@ -13,8 +13,11 @@ namespace Worker.AutoMapper
                 config.CreateMap<EmployeeModel, EmployeeViewModel>();
                 config.CreateMap<EmployeeViewModel, EmployeeModel>();
 
-                config.CreateMap<EmployeeModel, EmployeeSettingsViewModel>();
-                config.CreateMap<EmployeeSettingsViewModel, EmployeeModel>();
+                config.CreateMap<EmployeeModel, SettingsViewModel>();
+                config.CreateMap<SettingsViewModel, EmployeeModel>();
+
+                config.CreateMap<EmployerModel, SettingsViewModel>();
+                config.CreateMap<SettingsViewModel, EmployerModel>();
 
                 config.CreateMap<EmployerModel, EmployerViewModel>();
                 config.CreateMap<EmployerViewModel, EmployerModel>();

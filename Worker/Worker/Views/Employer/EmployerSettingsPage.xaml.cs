@@ -8,12 +8,12 @@ using Worker.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Worker.Views.Employee
+namespace Worker.Views.Employer
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class EmployeeSettingsPage : ContentPage
+	public partial class EmployerSettingsPage : ContentPage
 	{
-		public EmployeeSettingsPage ()
+		public EmployerSettingsPage ()
 		{
 			InitializeComponent ();
 

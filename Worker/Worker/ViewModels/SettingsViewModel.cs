@@ -4,9 +4,9 @@ using Xamarin.Forms;
 
 namespace Worker.ViewModels
 {
-    public class EmployeeSettingsViewModel : BaseViewModel
+    public class SettingsViewModel : BaseViewModel
     {
-        public EmployeeSettingsViewModel()
+        public SettingsViewModel()
         {
             UpdateEmailCommand = new Command(UpdateEmail);
             UpdatePhoneCommand = new Command(UpdatePhone);
