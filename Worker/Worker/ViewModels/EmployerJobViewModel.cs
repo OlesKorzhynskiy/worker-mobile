@@ -111,5 +111,9 @@ namespace Worker.ViewModels
         public int AppliedNumber => Employees.Count;
 
         public int WaitingForAnswerNumber => Employees.Count(employee => employee.Status == StatusEnum.WaitingForEmployerConfirmation);
+
+        public bool IsDone => Employees.Count != 0 && Employees.All(jobEmployee => jobEmployee.Status == StatusEnum.Done);
+
+        public bool IsActive => Employees.Count == 0 || Employees.Exists(jobEmployee => jobEmployee.Status != StatusEnum.Done);
     }
 }

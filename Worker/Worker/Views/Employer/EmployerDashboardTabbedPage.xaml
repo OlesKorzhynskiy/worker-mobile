@@ -5,4 +5,5 @@
              x:Class="Worker.Views.Employer.EmployerDashboardTabbedPage"
              NavigationPage.HasNavigationBar="False">
     <employer:EmployerJobsPage Title="Всі" />
+    <employer:EmployerDoneJobsPage Title="Історія" />
 </TabbedPage>
