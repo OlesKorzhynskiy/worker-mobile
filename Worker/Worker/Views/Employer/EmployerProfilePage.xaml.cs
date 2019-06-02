@@ -22,9 +22,9 @@ namespace Worker.Views.Employer
 
         private void OnEditProfilePage(object sender, EventArgs e)
         {
-            //var newUser = (EmployerViewModel)BindingContext;
-            //var editProfilePage = new EmployerEditProfilePage() { BindingContext = newUser };
-            //Navigation.PushAsync(editProfilePage);
+            var newUser = (EmployerViewModel)BindingContext;
+            var editProfilePage = new EmployerEditProfilePage() { BindingContext = newUser };
+            Navigation.PushAsync(editProfilePage);
         }
 
         private void OnReviewsPage(object sender, EventArgs e)
