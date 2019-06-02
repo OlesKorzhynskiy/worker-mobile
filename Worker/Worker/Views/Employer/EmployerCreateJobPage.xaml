@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Worker.Converters"
+             x:Class="Worker.Views.Employer.EmployerCreateJobPage"
+             Title="Додати роботу">
+    <ContentPage.Resources>
+        <converters:IntHoursConverter x:Key="IntHoursConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20" Spacing="0">
+                <Picker ItemsSource="{Binding JobTypes}" ItemDisplayBinding="{Binding Name}" SelectedIndex="{Binding JobType}" TextColor="{StaticResource TextColor}" FontSize="Small" />
+
+                <Entry Placeholder="Назва" Text="{Binding Name}" TextColor="{StaticResource TextColor}" FontSize="Small" />
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Дата початку роботи:" TextColor="{StaticResource TextColor}" FontSize="Small" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" />
+                    <DatePicker Date="{Binding StartDate}" TextColor="{StaticResource TextColor}" FontSize="Small" Margin="10, 0, 0, 0" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Тривалість роботи (год):" TextColor="{StaticResource TextColor}" FontSize="Small" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" />
+                    <Entry Text="{Binding Duration, Converter={StaticResource IntHoursConverter}}" Keyboard="Numeric" TextColor="{StaticResource TextColor}" FontSize="Small" Margin="10, 0, 0, 0" HorizontalOptions="EndAndExpand" WidthRequest="30" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Рейт (грн/год):" TextColor="{StaticResource TextColor}" FontSize="Small" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" />
+                    <Entry Text="{Binding Rate}" Keyboard="Numeric" TextColor="{StaticResource TextColor}" FontSize="Small" Margin="10, 0, 0, 0" HorizontalOptions="EndAndExpand" WidthRequest="30" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+
+                <Editor Text="{Binding Description}" Placeholder="Опис" FontSize="Small" TextColor="{StaticResource TextColor}" HeightRequest="100" />
+
+                <Button Text="Зберегти" FontSize="Small" TextColor="{StaticResource TextColor}" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Clicked="OnAddJobClick" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

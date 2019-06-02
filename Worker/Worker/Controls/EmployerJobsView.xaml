@@ -20,7 +20,7 @@
 
     <ContentView.Content>
         <StackLayout Spacing="0">
-            <Button Text="Створити роботу" TextColor="{StaticResource TextColor}" FontSize="Small" HeightRequest="40" Margin="0, 5" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Button Clicked="OnCreateJob" Text="Створити роботу" TextColor="{StaticResource TextColor}" FontSize="Small" HeightRequest="40" Margin="0, 5" HorizontalOptions="Center" VerticalOptions="Center"/>
             <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="100" ItemSelected="ListView_OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>

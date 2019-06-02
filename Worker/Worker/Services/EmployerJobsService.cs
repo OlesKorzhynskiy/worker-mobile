@@ -8,7 +8,7 @@ namespace Worker.Services
 {
     public static class EmployerJobsService
     {
-        public static List<EmployerJobModel> Jobs { get; set; }
+        private static List<EmployerJobModel> Jobs { get; set; }
 
         static EmployerJobsService()
         {
@@ -115,6 +115,11 @@ namespace Worker.Services
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Duration = new TimeSpan(2, 0, 0), Rate = 50
                 }
             };
+        }
+
+        public static void Add(EmployerJobModel job)
+        {
+            Jobs.Insert(0, job);
         }
 
         public static List<EmployerJobModel> GetActive()

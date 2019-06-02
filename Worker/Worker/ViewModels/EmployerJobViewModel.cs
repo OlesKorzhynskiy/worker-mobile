@@ -1,13 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using AutoMapper;
 using Worker.Enums;
 using Worker.Models;
+using Worker.Services;
 
 namespace Worker.ViewModels
 {
     public class EmployerJobViewModel : BaseViewModel
     {
+        public EmployerJobViewModel()
+        {
+            JobTypes = Mapper.Map<ObservableCollection<JobTypeViewModel>>(JobTypesService.GetAll());
+            JobType = JobTypes.FirstOrDefault();
+            Employees = new List<JobUserViewModel>();
+        }
+
         private int _id;
         public int Id
         {
@@ -59,6 +69,17 @@ namespace Worker.ViewModels
             set
             {
                 _jobType = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<JobTypeViewModel> _jobTypes;
+        public ObservableCollection<JobTypeViewModel> JobTypes
+        {
+            get => _jobTypes;
+            set
+            {
+                _jobTypes = value;
                 OnPropertyChanged();
             }
         }
