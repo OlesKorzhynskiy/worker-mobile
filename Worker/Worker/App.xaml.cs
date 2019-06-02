@@ -29,6 +29,9 @@ namespace Worker
                 Phone = "093 521 39 49",
                 AverageRating = 4,
                 AboutMe = "some text asdf ljkdsafj me , wehere ai tell smth sabout gme very interstetng, adsklfjdksla sdn somer more infroarsaf",
+                Email = "oles.korzhynskiy@gmail.com",
+                IsVisible = true,
+                Password = "123456",
                 JobTypes = new List<JobTypeModel>()
                 {
                     new JobTypeModel() {Id = 0, Name = "Вантажні роботи"},

@@ -23,5 +23,13 @@
                 <employee:EmployeeProfilePage />
             </x:Arguments>
         </NavigationPage>
+        <NavigationPage Title="Налаштування">
+            <NavigationPage.Icon>
+                <FileImageSource File="settings.png"></FileImageSource>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <employee:EmployeeSettingsPage />
+            </x:Arguments>
+        </NavigationPage>
     </TabbedPage.Children>
 </TabbedPage>
