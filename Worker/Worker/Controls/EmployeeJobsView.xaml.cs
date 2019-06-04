@@ -10,6 +10,7 @@ using Worker.Models;
 using Worker.Services;
 using Worker.ViewModels;
 using Worker.Views;
+using Worker.Views.Employee;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -41,6 +42,9 @@ namespace Worker.Controls
             if (e.SelectedItem != null)
             {
                 ((ListView)sender).SelectedItem = null;
+                var job = (EmployeeJobViewModel)e.SelectedItem;
+                var detailsPage = new EmployeeJobDetailsPage() { BindingContext = job };
+                Navigation.PushAsync(detailsPage);
             }
         }
 
