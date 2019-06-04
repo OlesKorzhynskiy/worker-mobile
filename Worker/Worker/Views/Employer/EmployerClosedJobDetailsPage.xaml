@@ -4,7 +4,8 @@
              xmlns:converters="clr-namespace:Worker.Converters"
              xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              x:Class="Worker.Views.Employer.EmployerClosedJobDetailsPage"
-             Title="{Binding Name}">
+             Title="{Binding Name}"
+             x:Name="ClosedJobDetailsPage">
     <ContentPage.Resources>
         <converters:DateTimeConverter x:Key="DateTimeConverter" />
     </ContentPage.Resources>
@@ -48,8 +49,11 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <Frame Padding="2, 0, 0, 0" Margin="2" CornerRadius="0">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OpenUserProfileCommand, Source={x:Reference ClosedJobDetailsPage}}" CommandParameter="{Binding Employee.Id}"/>
+                                            </Frame.GestureRecognizers>
                                             <StackLayout Spacing="0" BackgroundColor="White" Orientation="Horizontal">
-                                                <abstractions:CircleImage Source="{Binding Employee.Photo}" Margin="3" VerticalOptions="Center"/>
+                                                <abstractions:CircleImage Source="{Binding Employee.Photo}" Margin="3" VerticalOptions="Center" />
                                                 <StackLayout VerticalOptions="Center" Margin="5, 0 ,0 ,0" Spacing="0">
                                                     <Label Text="{Binding Employee.FirstName}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
                                                     <Label Text="{Binding Employee.City_Age_Rating}" TextColor="{StaticResource TextColor}" FontSize="Micro" />

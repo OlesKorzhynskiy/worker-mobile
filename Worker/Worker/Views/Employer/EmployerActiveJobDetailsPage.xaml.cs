@@ -19,10 +19,21 @@ namespace Worker.Views.Employer
 		{
 			InitializeComponent ();
 
+            OpenUserProfileCommand = new Command<string>(OpenUserProfile);
+
             AcceptJobCommand = new Command<string>(AcceptJob);
             RejectJobCommand = new Command<string>(RejectJob);
             FinishJobCommand = new Command<string>(FinishJob);
             StartJobCommand = new Command<string>(StartJob);
+        }
+
+        public ICommand OpenUserProfileCommand { get; }
+        private void OpenUserProfile(string userId)
+        {
+            var job = (EmployerJobViewModel)BindingContext;
+            var user = job.Employees.First(employee => employee.Employee.Id == userId).Employee;
+            var employeePage = new Employer_EmployeeProfilePage() { BindingContext = user };
+            Navigation.PushAsync(employeePage);
         }
 
         public ICommand AcceptJobCommand { get; }

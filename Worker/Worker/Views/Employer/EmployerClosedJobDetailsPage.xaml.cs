@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using AutoMapper;
 using Worker.Services;
 using Worker.ViewModels;
@@ -17,7 +18,9 @@ namespace Worker.Views.Employer
 		public EmployerClosedJobDetailsPage ()
 		{
 			InitializeComponent ();
-		}
+
+            OpenUserProfileCommand = new Command<string>(OpenUserProfile);
+        }
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -37,6 +40,15 @@ namespace Worker.Views.Employer
             job.JobType = job.JobTypes.First(jobType => jobType.Name == context.JobType.Name);
             var createJobPage = new EmployerCreateJobPage() { BindingContext = job };
             Navigation.PushAsync(createJobPage);
+        }
+
+        public ICommand OpenUserProfileCommand { get; }
+        private void OpenUserProfile(string userId)
+        {
+            var job = (EmployerJobViewModel)BindingContext;
+            var user = job.Employees.First(employee => employee.Employee.Id == userId).Employee;
+            var employeePage = new Employer_EmployeeProfilePage() { BindingContext = user };
+            Navigation.PushAsync(employeePage);
         }
     }
 }

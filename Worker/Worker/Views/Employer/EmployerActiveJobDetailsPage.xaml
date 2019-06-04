@@ -59,6 +59,9 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <Frame Padding="2, 0, 0, 0" Margin="2" CornerRadius="0">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OpenUserProfileCommand, Source={x:Reference DetailsPage}}" CommandParameter="{Binding Employee.Id}"/>
+                                            </Frame.GestureRecognizers>
                                             <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="White">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="*" />
@@ -95,6 +98,9 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <Frame Padding="2, 0, 0, 0" Margin="2" CornerRadius="0">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OpenUserProfileCommand, Source={x:Reference DetailsPage}}" CommandParameter="{Binding Employee.Id}"/>
+                                            </Frame.GestureRecognizers>
                                             <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="White">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="*" />
