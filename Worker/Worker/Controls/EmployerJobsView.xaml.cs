@@ -34,6 +34,11 @@ namespace Worker.Controls
                     var detailsPage = new EmployerActiveJobDetailsPage() { BindingContext = job };
                     Navigation.PushAsync(detailsPage);
                 }
+                else
+                {
+                    var detailsPage = new EmployerClosedJobDetailsPage() {BindingContext = job};
+                    Navigation.PushAsync(detailsPage);
+                }
             }
         }
 

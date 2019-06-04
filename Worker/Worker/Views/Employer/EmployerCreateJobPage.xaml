@@ -6,11 +6,12 @@
              Title="Додати роботу">
     <ContentPage.Resources>
         <converters:IntHoursConverter x:Key="IntHoursConverter" />
+        <converters:IntEnumConverter x:Key="IntEnumConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="20" Spacing="0">
-                <Picker ItemsSource="{Binding JobTypes}" ItemDisplayBinding="{Binding Name}" SelectedIndex="{Binding JobType}" TextColor="{StaticResource TextColor}" FontSize="Small" />
+                <Picker ItemsSource="{Binding JobTypes}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding JobType}" TextColor="{StaticResource TextColor}" FontSize="Small" />
 
                 <Entry Placeholder="Назва" Text="{Binding Name}" TextColor="{StaticResource TextColor}" FontSize="Small" />
 

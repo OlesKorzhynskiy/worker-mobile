@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Worker.Enums;
 using Worker.Models;
+using Xamarin.Forms.Internals;
 
 namespace Worker.Services
 {
@@ -216,6 +217,7 @@ namespace Worker.Services
             if (job != null)
             {
                 job.IsClosed = true;
+                job.Employees.Where(employee => employee.Status == StatusEnum.InProgress).ForEach(employee => employee.Status = StatusEnum.Done);
             }
         }
     }

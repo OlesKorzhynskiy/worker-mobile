@@ -56,7 +56,7 @@
                                     <Label IsVisible="{Binding IsActive}" Text="{Binding WaitingForAnswerNumber, StringFormat='в очікуванні: {0}'}" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource LabelGeneralStyles}" />
 
                                     <!-- Done -->
-                                    <Label IsVisible="{Binding IsClosed}" Text="{Binding AppliedNumber, StringFormat='працівників: {0}'}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource LabelGeneralStyles}" />
+                                    <Label IsVisible="{Binding IsClosed}" Text="{Binding WorkedOnNumber, StringFormat='працівників: {0}'}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource LabelGeneralStyles}" />
 
                                 </Grid.Children>
                             </Grid>

@@ -25,7 +25,7 @@ namespace Worker.Views.Employer
             var job = (EmployerJobViewModel)BindingContext;
             job.Employer = Mapper.Map<EmployerViewModel>(App.User);
             EmployerJobsService.Add(Mapper.Map<EmployerJobModel>(job));
-            Navigation.PopAsync();
+            Navigation.PopToRootAsync();
         }
     }
 }

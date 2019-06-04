@@ -160,12 +160,17 @@ namespace Worker.ViewModels
 
         public int WaitingForAnswerNumber => Employees.Count(employee => employee.Status == StatusEnum.WaitingForEmployerConfirmation);
 
+        public int WorkedOnNumber => Employees.Count(employee => employee.Status == StatusEnum.Done);
+
         public List<JobUserViewModel> AppliedEmployees => Employees.Where(employee =>
             employee.Status == StatusEnum.WaitingForEmployeeConfirmation ||
             employee.Status == StatusEnum.WaitingForEmployerConfirmation).ToList();
 
         public List<JobUserViewModel> AgreedEmployees => Employees.Where(employee =>
             employee.Status == StatusEnum.InProgress || employee.Status == StatusEnum.Done).ToList();
+
+        public List<JobUserViewModel> WorkedOnEmployees => Employees.Where(employee =>
+            employee.Status == StatusEnum.Done).ToList();
 
         public bool IsActive => !IsClosed;
     }
