@@ -28,6 +28,12 @@ namespace Worker.Controls
             if (e.SelectedItem != null)
             {
                 ((ListView)sender).SelectedItem = null;
+                var job = (EmployerJobViewModel) e.SelectedItem;
+                if (job.IsActive)
+                {
+                    var detailsPage = new EmployerActiveJobDetailsPage() { BindingContext = job };
+                    Navigation.PushAsync(detailsPage);
+                }
             }
         }
 

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using AutoMapper;
 using Worker.Enums;
 using Worker.Models;
 using Worker.Services;
+using Xamarin.Forms;
 
 namespace Worker.ViewModels
 {
@@ -16,6 +18,7 @@ namespace Worker.ViewModels
             JobTypes = Mapper.Map<ObservableCollection<JobTypeViewModel>>(JobTypesService.GetAll());
             JobType = JobTypes.FirstOrDefault();
             Employees = new List<JobUserViewModel>();
+            IsLookingForNewEmployees = true;
         }
 
         private int _id;
@@ -117,6 +120,30 @@ namespace Worker.ViewModels
             }
         }
 
+        private bool _isLookingForNewEmployees;
+        public bool IsLookingForNewEmployees
+        {
+            get => _isLookingForNewEmployees;
+            set
+            {
+                _isLookingForNewEmployees = value;
+                OnPropertyChanged();
+                OnPropertyChanged("IsNotLookingForNewEmployees");
+            }
+        }
+
+        private bool _isClosed;
+        public bool IsClosed
+        {
+            get => _isClosed;
+            set
+            {
+                _isClosed = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsNotLookingForNewEmployees => !IsLookingForNewEmployees;
 
         private List<JobUserViewModel> _employees;
         public List<JobUserViewModel> Employees
@@ -133,8 +160,13 @@ namespace Worker.ViewModels
 
         public int WaitingForAnswerNumber => Employees.Count(employee => employee.Status == StatusEnum.WaitingForEmployerConfirmation);
 
-        public bool IsDone => Employees.Count != 0 && Employees.All(jobEmployee => jobEmployee.Status == StatusEnum.Done);
+        public List<JobUserViewModel> AppliedEmployees => Employees.Where(employee =>
+            employee.Status == StatusEnum.WaitingForEmployeeConfirmation ||
+            employee.Status == StatusEnum.WaitingForEmployerConfirmation).ToList();
 
-        public bool IsActive => Employees.Count == 0 || Employees.Exists(jobEmployee => jobEmployee.Status != StatusEnum.Done);
+        public List<JobUserViewModel> AgreedEmployees => Employees.Where(employee =>
+            employee.Status == StatusEnum.InProgress || employee.Status == StatusEnum.Done).ToList();
+
+        public bool IsActive => !IsClosed;
     }
 }

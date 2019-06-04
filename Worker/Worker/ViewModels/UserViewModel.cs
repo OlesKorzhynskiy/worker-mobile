@@ -5,6 +5,17 @@ namespace Worker.ViewModels
 {
     public class UserViewModel : BaseViewModel
     {
+        private string _id;
+        public string Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string _firstName;
         public string FirstName
         {
@@ -123,5 +134,7 @@ namespace Worker.ViewModels
         public string UserName => FirstName + " " + LastName;
 
         public string CityAndAge => City + ", " + Age;
+
+        public string City_Age_Rating => Age + "р. " + City + ", " + AverageRating;
     }
 }

@@ -1,4 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Worker.Enums;
+using Worker.Services;
 
 namespace Worker.ViewModels
 {

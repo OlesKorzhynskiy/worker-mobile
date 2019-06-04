@@ -1,4 +1,6 @@
-﻿using Worker.Enums;
+﻿using System.Windows.Input;
+using Worker.Enums;
+using Worker.Services;
 
 namespace Worker.ViewModels
 {
@@ -24,5 +26,10 @@ namespace Worker.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public bool IsWaitingForEmployerConfirmation => Status == StatusEnum.WaitingForEmployerConfirmation;
+        public bool IsWaitingForEmployeeConfirmation => Status == StatusEnum.WaitingForEmployeeConfirmation;
+        public bool IsDone => Status == StatusEnum.Done;
+        public bool IsInProgress => Status == StatusEnum.InProgress;
     }
 }

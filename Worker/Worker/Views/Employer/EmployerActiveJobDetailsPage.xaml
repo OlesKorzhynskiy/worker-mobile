@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Worker.Converters"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="Worker.Views.Employer.EmployerActiveJobDetailsPage"
+             Title="{Binding Name}"
+             x:Name="DetailsPage">
+    <ContentPage.Resources>
+        <converters:DateTimeConverter x:Key="DateTimeConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Margin="0, 0, 0, 10" RowSpacing="0" ColumnSpacing="0" Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.Children>
+                    <Frame CornerRadius="0" Grid.Row="0" Grid.Column="0" BackgroundColor="White" Margin="2, 2, 1, 2" Padding="2">
+                        <StackLayout Spacing="0">
+                            <Label Text="{Binding JobType.Name, StringFormat='Категорія: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                            <Label Text="{Binding StartDate, StringFormat='Початок: {0}', Converter={StaticResource DateTimeConverter}, ConverterParameter='dd.mm.yyyy'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                            <Label Text="{Binding Duration, StringFormat='Тривалість: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                            <Label Text="{Binding Rate, StringFormat='Рейт: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame CornerRadius="0" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="White" Margin="1, 2, 2, 2" Padding="2">
+                        <StackLayout Spacing="0">
+                            <Label Text="{Binding AppliedNumber, StringFormat='Подалося - {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                            <Label Text="{Binding WaitingForAnswerNumber, StringFormat='Очікують відповіді - {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                            <Label IsVisible="{Binding IsLookingForNewEmployees}" Text="Набір - продовжується" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                            <Label IsVisible="{Binding IsNotLookingForNewEmployees}" Text="Набір - зупинено" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Button IsVisible="{Binding IsLookingForNewEmployees}" Clicked="StopLookingForEmployees" Grid.Row="1" Grid.Column="0" HeightRequest="32" Padding="0" Text="Завершити пошук" BackgroundColor="LightGray"  TextColor="{StaticResource TextColor}" Margin="2, 2, 1, 2" FontSize="Micro" />
+                    <Button IsVisible="{Binding IsNotLookingForNewEmployees}" Clicked="StartLookingForEmployees" Grid.Row="1" Grid.Column="0" HeightRequest="32" Padding="0" Text="Розпочати пошук" BackgroundColor="LightGray"  TextColor="{StaticResource TextColor}" Margin="2, 2, 1, 2" FontSize="Micro" />
+
+                    <Button Clicked="CloseJob" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HeightRequest="20" Padding="0" Text="Завершити роботу" BackgroundColor="LightGray" TextColor="{StaticResource TextColor}" Margin="1, 2, 2, 2" FontSize="Micro" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="Кандидати:" Margin="0, 10, 0, 5" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+
+                    <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Spacing="0">
+                        <Label Text="Подалися" TextColor="{StaticResource TextColor}" FontSize="Small" />
+                        <ListView ItemsSource="{Binding AppliedEmployees}" SeparatorVisibility="None" RowHeight="40" ItemSelected="ListView_OnItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame Padding="2, 0, 0, 0" Margin="2" CornerRadius="0">
+                                            <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="White">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="2*" />
+                                                    <ColumnDefinition Width="2*" />
+                                                    <ColumnDefinition Width="2*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.Children>
+                                                    <abstractions:CircleImage Grid.Row="0" Grid.Column="0" Source="{Binding Employee.Photo}" Margin="3" VerticalOptions="Center"/>
+                                                    <StackLayout VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Margin="5, 0 ,0 ,0" Spacing="0">
+                                                        <Label Text="{Binding Employee.FirstName}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                                                        <Label Text="{Binding Employee.City_Age_Rating}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                                                    </StackLayout>
+                                                    <Button Command="{Binding AcceptJobCommand, Source={x:Reference DetailsPage}}" CommandParameter="{Binding Employee.Id}" IsVisible="{Binding IsWaitingForEmployerConfirmation}" Margin="1, 0" Grid.Row="0" Grid.Column="2" Text="Прийняти" TextColor="{StaticResource TextColor}" BackgroundColor="LightGray" Padding="0" FontSize="Micro"/>
+                                                    <Label IsVisible="{Binding IsWaitingForEmployeeConfirmation}" Margin="1, 0" Grid.Row="0" Grid.Column="2" Text="Очікується відповідь" TextColor="{StaticResource TextColor}" FontSize="Micro" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                                    <Button Command="{Binding RejectJobCommand, Source={x:Reference DetailsPage}}" CommandParameter="{Binding Employee.Id}" Grid.Row="0" Grid.Column="3" Text="Відмовити" TextColor="{StaticResource TextColor}" BackgroundColor="LightGray" Padding="0" FontSize="Micro"/>
+                                                </Grid.Children>
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Spacing="0" Margin="0, 10, 0, 0"> 
+                        <Label Text="Погодилися" TextColor="{StaticResource TextColor}" FontSize="Small" />
+                        <ListView ItemsSource="{Binding AgreedEmployees}" SeparatorVisibility="None" RowHeight="40" ItemSelected="ListView_OnItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame Padding="2, 0, 0, 0" Margin="2" CornerRadius="0">
+                                            <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="White">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="2*" />
+                                                    <ColumnDefinition Width="2*" />
+                                                    <ColumnDefinition Width="2*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.Children>
+                                                    <abstractions:CircleImage Grid.Row="0" Grid.Column="0" Source="{Binding Employee.Photo}" Margin="3" VerticalOptions="Center"/>
+                                                    <StackLayout VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Margin="5, 0 ,0 ,0" Spacing="0">
+                                                        <Label Text="{Binding Employee.FirstName}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                                                        <Label Text="{Binding Employee.City_Age_Rating}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                                                    </StackLayout>
+                                                    <Label IsVisible="{Binding IsInProgress}" Margin="1, 0" Grid.Row="0" Grid.Column="2" Text="Виконується" TextColor="{StaticResource TextColor}" FontSize="Micro" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                                    <Label IsVisible="{Binding IsDone}" Margin="1, 0" Grid.Row="0" Grid.Column="2" Text="Завершено" TextColor="{StaticResource TextColor}" FontSize="Micro" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                                    <Button IsVisible="{Binding IsInProgress}" Command="{Binding FinishJobCommand, Source={x:Reference DetailsPage}}" CommandParameter="{Binding Employee.Id}" Grid.Row="0" Grid.Column="3" Text="Завершити" TextColor="{StaticResource TextColor}" BackgroundColor="LightGray" Padding="0" FontSize="Micro"/>
+                                                    <Button IsVisible="{Binding IsDone}" Command="{Binding StartJobCommand, Source={x:Reference DetailsPage}}" CommandParameter="{Binding Employee.Id}" Grid.Row="0" Grid.Column="3" Text="Відновити" TextColor="{StaticResource TextColor}" BackgroundColor="LightGray" Padding="0" FontSize="Micro"/>
+                                                </Grid.Children>
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Spacing="0" Margin="0, 10, 0, 0">
+                        <Label Text="Опис роботи:" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                        <Label Text="{Binding Description}" TextColor="{StaticResource TextColor}" />
+                    </StackLayout>
+                </Grid.Children>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
