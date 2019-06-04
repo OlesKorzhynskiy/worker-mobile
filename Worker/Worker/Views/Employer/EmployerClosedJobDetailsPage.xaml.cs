@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AutoMapper;
+using Worker.Models;
 using Worker.Services;
 using Worker.ViewModels;
 using Xamarin.Forms;
@@ -20,6 +21,7 @@ namespace Worker.Views.Employer
 			InitializeComponent ();
 
             OpenUserProfileCommand = new Command<string>(OpenUserProfile);
+            AddReviewCommand = new Command<string>(AddReview);
         }
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -49,6 +51,24 @@ namespace Worker.Views.Employer
             var user = job.Employees.First(employee => employee.Employee.Id == userId).Employee;
             var employeePage = new Employer_EmployeeProfilePage() { BindingContext = user };
             Navigation.PushAsync(employeePage);
+        }
+
+        private string _employeeId;
+        public ICommand AddReviewCommand { get; }
+        private void AddReview(string employeeId)
+        {
+            var addReviewPage = new AddReviewPage() { BindingContext = new ReviewViewModel() };
+            _employeeId = employeeId;
+            addReviewPage.OnAddReview += OnReviewAdded;
+            Navigation.PushAsync(addReviewPage);
+        }
+
+        private void OnReviewAdded(ReviewViewModel reviewViewModel)
+        {
+            var job = (EmployerJobViewModel) BindingContext;
+            job.Employees.First(employee => employee.Employee.Id == _employeeId).Employee.ReceivedReviews.Insert(0, reviewViewModel);
+            var review = Mapper.Map<ReviewModel>(reviewViewModel);
+            EmployerJobsService.AddReview(job.Id, _employeeId, review);
         }
     }
 }

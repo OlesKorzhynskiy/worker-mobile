@@ -121,7 +121,7 @@ namespace Worker.Services
             var job = Jobs.First(j => j.Id == id);
             if (job != null)
             {
-                job.Employer.ReceivedReviews.Add(review);
+                job.Employer.ReceivedReviews.Insert(0, review);
             }
         }
 

@@ -7,6 +7,7 @@ using AutoMapper;
 using Worker.Enums;
 using Worker.Models;
 using Worker.Services;
+using Worker.Views;
 using Xamarin.Forms;
 
 namespace Worker.ViewModels

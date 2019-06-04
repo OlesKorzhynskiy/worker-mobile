@@ -179,6 +179,15 @@ namespace Worker.Services
             };
         }
 
+        public static void AddReview(int jobId, string userId, ReviewModel review)
+        {
+            var job = Jobs.First(j => j.Id == jobId);
+            if (job != null)
+            {
+                job.Employees.First(employee => employee.Employee.Id == userId).Employee.ReceivedReviews.Insert(0, review);
+            }
+        }
+
         public static void Add(EmployerJobModel job)
         {
             Jobs.Insert(0, job);

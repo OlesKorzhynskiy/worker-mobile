@@ -58,6 +58,7 @@
                                                     <Label Text="{Binding Employee.FirstName}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
                                                     <Label Text="{Binding Employee.City_Age_Rating}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
                                                 </StackLayout>
+                                                <Button HorizontalOptions="EndAndExpand" Command="{Binding AddReviewCommand, Source={x:Reference ClosedJobDetailsPage}}" CommandParameter="{Binding Employee.Id}" Text="Залишити відгук" Margin="2" BackgroundColor="LightGray"  TextColor="{StaticResource TextColor}" Padding="5, 0" FontSize="Micro"/>
                                             </StackLayout>
                                         </Frame>
                                     </ViewCell>
