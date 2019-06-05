@@ -8,6 +8,13 @@
     <ContentPage.Resources>
         <converters:DateTimeConverter x:Key="DateTimeConverter" />
         <converters:StatusEnumConverter x:Key="StatusEnumConverter" />
+        <Style x:Key="ButtonGeneralStyles" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="LightGray"/>
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HeightRequest" Value="32" />
+            <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            <Setter Property="FontSize" Value="Micro" />
+        </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
@@ -33,7 +40,7 @@
                         </StackLayout>
                     </Frame>
 
-                    <Frame CornerRadius="0" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="White" Margin="1, 2, 2, 2" Padding="2">
+                    <Frame CornerRadius="0" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="White" Margin="1, 2, 2, 2" Padding="2" x:Name="EmployerFrame">
                         <StackLayout Spacing="0">
                             <Label Text="Роботодавець" TextColor="{StaticResource TextColor}" FontSize="Micro" />
                             <StackLayout Orientation="Horizontal">
@@ -48,10 +55,29 @@
 
                     <Label HorizontalTextAlignment="Center" Margin="0, 3, 0, 10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Status, Converter={StaticResource StatusEnumConverter}, StringFormat='Статус: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Small" />
 
-                    <Button Grid.Row="2" Grid.Column="0" HeightRequest="32" Padding="0" Text="Підтвердити" BackgroundColor="LightGray"  TextColor="{StaticResource TextColor}" Margin="2, 2, 1, 2" FontSize="Micro" />
-                    <!--<Button IsVisible="{Binding IsNotLookingForNewEmployees}" Clicked="StartLookingForEmployees" Grid.Row="2" Grid.Column="0" HeightRequest="32" Padding="0" Text="Розпочати пошук" BackgroundColor="LightGray"  TextColor="{StaticResource TextColor}" Margin="2, 2, 1, 2" FontSize="Micro" />-->
+                    <!-- New -->
+                    <Button IsVisible="{Binding IsNew}" Command="{Binding ApplyJobCommand}" Text="Податися" Grid.Row="2" Grid.Column="0" Margin="2, 2, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                    <Button IsVisible="{Binding IsNew}" Command="{Binding RemoveJobCommand}" Text="Видалити" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="1, 2, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
 
-                    <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HeightRequest="20" Padding="0" Text="Відмовитися" BackgroundColor="LightGray" TextColor="{StaticResource TextColor}" Margin="1, 2, 2, 2" FontSize="Micro" />
+                    <!-- WaitingForEmployerConfirmation -->
+                    <Button IsVisible="{Binding IsWaitingForEmployerConfirmation}" Command="{Binding RejectJobCommand}" Text="Відхилити" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" Style="{StaticResource ButtonGeneralStyles}" />
+
+                    <!-- WaitingForEmployeeConfirmation -->
+                    <Button IsVisible="{Binding IsWaitingForEmployeeConfirmation}" Command="{Binding AcceptJobCommand}" Text="Підтвердити" Grid.Row="2" Grid.Column="0" Margin="2, 2, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                    <Button IsVisible="{Binding IsWaitingForEmployeeConfirmation}" Command="{Binding RejectJobCommand}" Text="Відхилити" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="1, 2, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+
+                    <!-- IsRejectedByEmployer -->
+                    <Button IsVisible="{Binding IsRejectedByEmployer}" Command="{Binding RemoveJobCommand}" Text="Видалити" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" Style="{StaticResource ButtonGeneralStyles}" />
+
+                    <!-- RejectedByEmployee -->
+                    <Button IsVisible="{Binding IsRejectedByEmployee}" Command="{Binding ApplyJobCommand}" Text="Податися знову" Grid.Row="2" Grid.Column="0" Margin="2, 2, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />
+                    <Button IsVisible="{Binding IsRejectedByEmployee}" Command="{Binding RemoveJobCommand}" Text="Видалити" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="1, 2, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+
+                    <!-- Done -->
+                    <Button IsVisible="{Binding IsDone}" Clicked="AddReview" Text="Залишити відгук" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" Style="{StaticResource ButtonGeneralStyles}" />
+
+                    <!-- Removed -->
+                    <Button IsVisible="{Binding IsRemoved}" Command="{Binding ReturnJobCommand}" Text="Відновити" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" Style="{StaticResource ButtonGeneralStyles}" />
 
                     <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Spacing="0" Margin="0, 10, 0, 0">
                         <Label Text="Опис роботи:" TextColor="{StaticResource TextColor}" FontSize="Medium" />
