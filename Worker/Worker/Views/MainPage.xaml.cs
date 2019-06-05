@@ -19,7 +19,7 @@ namespace Worker.Views
                 var dashboardPage = new NavigationPage(new EmployeeDashboardTabbedPage())
                 {
                     Icon = new FileImageSource() { File = "profile.png" },
-                    Title = "Доска"
+                    Title = "Дошка"
                 };
                 TabbedPageMenu.Children.Add(dashboardPage);
                 var profilePage = new NavigationPage(new EmployeeProfilePage())
@@ -41,7 +41,7 @@ namespace Worker.Views
                 var dashboardPage = new NavigationPage(new EmployerDashboardTabbedPage())
                 {
                     Icon = new FileImageSource() { File = "profile.png" },
-                    Title = "Доска"
+                    Title = "Дошка"
                 };
                 TabbedPageMenu.Children.Add(dashboardPage);
                 var profilePage = new NavigationPage(new EmployerProfilePage())
