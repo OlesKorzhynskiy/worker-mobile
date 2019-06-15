@@ -1,5 +1,7 @@
 ﻿using System;
+using AutoMapper;
 using Worker.Models;
+using Worker.ViewModels;
 using Worker.Views.Employee;
 using Worker.Views.Employer;
 using Xamarin.Forms;
@@ -10,7 +12,7 @@ namespace Worker.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : TabbedPage
     {
-        public MainPage()
+        public MainPage(bool editPage = false)
         {
             InitializeComponent();
 
@@ -34,6 +36,11 @@ namespace Worker.Views
                     Title = "Налаштування"
                 };
                 TabbedPageMenu.Children.Add(settingsPage);
+
+                if (editPage)
+                {
+                    Navigation.PushAsync(new EmployeeEditProfilePage() { BindingContext = Mapper.Map<EmployeeViewModel>(App.User) });
+                }
             }
 
             if (IsEmployer)
@@ -56,6 +63,11 @@ namespace Worker.Views
                     Title = "Налаштування"
                 };
                 TabbedPageMenu.Children.Add(settingsPage);
+
+                if (editPage)
+                {
+                    Navigation.PushAsync(new EmployerEditProfilePage() { BindingContext = Mapper.Map<EmployerViewModel>(App.User) });
+                }
             }
         }
 

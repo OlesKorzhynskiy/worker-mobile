@@ -7,5 +7,6 @@
             xmlns:employee="clr-namespace:Worker.Views.Employee"
             xmlns:employer="clr-namespace:Worker.Views.Employer"
             android:TabbedPage.ToolbarPlacement="Bottom"
-            x:Name="TabbedPageMenu">
+            x:Name="TabbedPageMenu"
+            NavigationPage.HasNavigationBar="False">
 </TabbedPage>

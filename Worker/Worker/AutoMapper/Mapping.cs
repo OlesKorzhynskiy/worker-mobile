@@ -10,6 +10,12 @@ namespace Worker.AutoMapper
         {
             Mapper.Initialize(config =>
             {
+                config.CreateMap<EmployeeModel, UserModel>();
+                config.CreateMap<UserModel, EmployeeModel>();
+
+                config.CreateMap<EmployerModel, UserModel>();
+                config.CreateMap<UserModel, EmployerModel>();
+
                 config.CreateMap<EmployeeJobModel, EmployeeJobViewModel>();
                 config.CreateMap<EmployeeJobViewModel, EmployeeJobModel>();
 
