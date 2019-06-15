@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,15 @@ namespace Worker.Controls
 			InitializeComponent ();
 
             AddReviewCommand = new Command<int>(AddReview);
+        }
+
+        public int JobsListViewHeight
+        {
+            get
+            {
+                var elements = (ObservableCollection<EmployeeJobViewModel>)BindingContext;
+                return elements?.Count * 110 ?? 0;
+            }
         }
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)

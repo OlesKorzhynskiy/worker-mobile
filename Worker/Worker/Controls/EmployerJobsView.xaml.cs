@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,15 @@ namespace Worker.Controls
         public EmployerJobsView ()
 		{
 			InitializeComponent ();
+        }
+
+        public int JobsListViewHeight
+        {
+            get
+            {
+                var elements = (ObservableCollection<EmployerJobViewModel>) BindingContext;
+                return elements?.Count * 100 ?? 0;
+            }
         }
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)

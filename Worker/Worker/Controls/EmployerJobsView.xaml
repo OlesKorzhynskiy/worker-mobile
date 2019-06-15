@@ -22,7 +22,7 @@
     <ContentView.Content>
         <StackLayout Spacing="0">
             <Button Clicked="OnCreateJob" Text="Створити роботу" TextColor="{StaticResource TextColor}" FontSize="Small" HeightRequest="40" Margin="0, 5" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="100" ItemSelected="ListView_OnItemSelected">
+            <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="100" ItemSelected="ListView_OnItemSelected" HeightRequest="{Binding JobsListViewHeight, Source={x:Reference EmployerJobsPage}}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

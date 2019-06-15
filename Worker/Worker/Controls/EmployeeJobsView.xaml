@@ -20,7 +20,7 @@
     </ContentView.Resources>
 
     <ContentView.Content>
-        <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="110" ItemSelected="ListView_OnItemSelected">
+        <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="110" ItemSelected="ListView_OnItemSelected" HeightRequest="{Binding JobsListViewHeight, Source={x:Reference EmployeeJobsPage}}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
