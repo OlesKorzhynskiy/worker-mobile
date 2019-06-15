@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Worker.Helpers;
 using Worker.Interfaces;
 using Worker.Models;
 using Worker.ViewModels;
@@ -31,6 +32,8 @@ namespace Worker.Views.Employer
 
         private async void OnUploadPhotoClick(object sender, EventArgs e)
         {
+            var userViewModel = (EmployerViewModel)BindingContext;
+
             var button = (Button)sender;
             button.IsEnabled = false;
             var picturePicker = DependencyService.Get<IPicturePicker>();
@@ -38,8 +41,8 @@ namespace Worker.Views.Employer
 
             if (stream != null)
             {
-                var userViewModel = (EmployerViewModel)BindingContext;
-                userViewModel.Photo = ImageSource.FromStream(() => stream);
+                var bytes = ConverterHelper.ReadFully(stream);
+                userViewModel.Photo = ImageSource.FromStream(() => new MemoryStream(bytes));
             }
 
             button.IsEnabled = true;
