@@ -55,6 +55,7 @@ namespace Worker.Services
                                 {
                                     new JobTypeModel() {Id = 0, Name = "Вантажні роботи"},
                                     new JobTypeModel() {Id = 1, Name = "Діти"},
+                                    new JobTypeModel() {Id = 2, Name = "Прибирання"},
                                 },
                                 AboutMe = "some text asdf ljkdsafj me , wehere ai tell smth sabout gme very interstetng, adsklfjdksla sdn somer more infroarsaf",
                                 LastName = "Петренко",
@@ -81,7 +82,12 @@ namespace Worker.Services
                         },
                         new JobUserModel()
                         {
-                            Employee = new EmployeeModel() {Id = "1", FirstName = "oles", BirthDate = new DateTime(1998, 5, 2), City = "Львів", AverageRating = 4, Photo = "https://media.licdn.com/dms/image/C5603AQGAzsg5qZRzzg/profile-displayphoto-shrink_200_200/0?e=1562803200&v=beta&t=WVi627qWCw58aEtQ2DI-jirm3WVdjQWLQCEvy4eOV1A"},
+                            Employee = new EmployeeModel() {Id = "1", FirstName = "oles", BirthDate = new DateTime(1998, 5, 2), City = "Львів", AverageRating = 4,
+                                JobTypes = new List<JobTypeModel>()
+                                {
+                                    new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}
+                                },
+                                Photo = "https://media.licdn.com/dms/image/C5603AQGAzsg5qZRzzg/profile-displayphoto-shrink_200_200/0?e=1562803200&v=beta&t=WVi627qWCw58aEtQ2DI-jirm3WVdjQWLQCEvy4eOV1A"},
                             Status = StatusEnum.WaitingForEmployerConfirmation
                         },
                         new JobUserModel()

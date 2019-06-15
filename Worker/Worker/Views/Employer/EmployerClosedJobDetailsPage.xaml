@@ -44,7 +44,7 @@
 
                     <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Spacing="0">
                         <Label Text="Працівники" TextColor="{StaticResource TextColor}" FontSize="Small" />
-                        <ListView ItemsSource="{Binding WorkedOnEmployees}" SeparatorVisibility="None" RowHeight="40" ItemSelected="ListView_OnItemSelected">
+                        <ListView ItemsSource="{Binding WorkedOnEmployees}" SeparatorVisibility="None" RowHeight="40" ItemSelected="ListView_OnItemSelected" HeightRequest="{Binding WorkedOnEmployeesListViewHeight}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
