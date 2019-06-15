@@ -46,10 +46,6 @@ namespace Worker.Views.Employee
                 var userViewModel = (EmployeeViewModel)BindingContext;
                 userViewModel.Photo = ImageSource.FromStream(() => stream);
             }
-            else
-            {
-                var dsa = 2;
-            }
 
             button.IsEnabled = true;
         }

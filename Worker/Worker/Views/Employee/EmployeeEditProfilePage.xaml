@@ -2,13 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:converters="clr-namespace:Worker.Converters"
              x:Class="Worker.Views.Employee.EmployeeEditProfilePage"
              Title="Редагувати">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DefaultPhotoConverter x:Key="DefaultPhotoConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="{StaticResource StandartPagePadding}" Spacing="0">
                 <!-- Main information -->
-                <abstractions:CircleImage x:Name="UserImage" Source="{Binding Photo}" Aspect="AspectFill" WidthRequest="64" HeightRequest="64" HorizontalOptions="Center" />
+                <abstractions:CircleImage x:Name="UserImage" Source="{Binding Photo, Converter={StaticResource DefaultPhotoConverter}}" Aspect="AspectFill" WidthRequest="64" HeightRequest="64" HorizontalOptions="Center" />
 
                 <Button Clicked="OnUploadPhotoClick" Margin="0, 0, 0, 10" Padding="20, 0" Text="Змінити фото" TextColor="{StaticResource TextColor}" FontSize="Small" HeightRequest="35" HorizontalOptions="CenterAndExpand" />
 
