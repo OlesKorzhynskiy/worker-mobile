@@ -5,6 +5,7 @@
              xmlns:laavorRatingSwap="clr-namespace:LaavorRatingSwap;assembly=RatingAndSwap"
              xmlns:converters="clr-namespace:Worker.Converters"
              x:Class="Worker.Views.ReviewsPage"
+             x:Name="ReviewsListPage"
              Title="Відгуки">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -14,8 +15,8 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="{StaticResource StandartPagePadding}">
-                <ListView ItemsSource="{Binding .}" IsEnabled="False" SeparatorVisibility="None" HasUnevenRows="True">
+            <StackLayout Padding="{StaticResource StandartPagePadding}" HeightRequest="{Binding ReviewsListViewHeight, Source={x:Reference ReviewsListPage}}">
+                <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="170" ItemSelected="ListView_OnItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
