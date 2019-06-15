@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
+using Xamarin.Forms;
 
 namespace Worker.ViewModels
 {
@@ -38,8 +40,8 @@ namespace Worker.ViewModels
             }
         }
 
-        private string _photo;
-        public string Photo
+        private ImageSource _photo;
+        public ImageSource Photo
         {
             get => _photo;
             set

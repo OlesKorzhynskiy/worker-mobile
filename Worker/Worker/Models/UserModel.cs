@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using Xamarin.Forms;
 
 namespace Worker.Models
 {
@@ -13,7 +15,7 @@ namespace Worker.Models
         public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Photo { get; set; }
+        public ImageSource Photo { get; set; }
         public string City { get; set; }
         public string Phone { get; set; }
         public DateTime BirthDate { get; set; }

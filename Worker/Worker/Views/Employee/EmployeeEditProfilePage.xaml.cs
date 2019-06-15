@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Worker.Interfaces;
 using Worker.Models;
 using Worker.Services;
 using Worker.ViewModels;
@@ -30,6 +32,26 @@ namespace Worker.Views.Employee
             var userViewModel = (EmployeeViewModel)BindingContext;
             App.User = Mapper.Map<EmployeeModel>(userViewModel);
             Navigation.PopAsync();
+        }
+
+        private async void OnUploadPhotoClick(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            button.IsEnabled = false;
+            var picturePicker = DependencyService.Get<IPicturePicker>();
+            Stream stream = await picturePicker.GetImageStreamAsync();
+
+            if (stream != null)
+            {
+                var userViewModel = (EmployeeViewModel)BindingContext;
+                userViewModel.Photo = ImageSource.FromStream(() => stream);
+            }
+            else
+            {
+                var dsa = 2;
+            }
+
+            button.IsEnabled = true;
         }
 
         private void OnAddJobTypes(object sender, EventArgs e)

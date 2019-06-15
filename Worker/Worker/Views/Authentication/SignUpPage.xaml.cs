@@ -29,7 +29,7 @@ namespace Worker.Views.Authentication
             TypePicker.SelectedIndex = 0;
         }
 
-        private async void OnSignUp(object sender, EventArgs e)
+        private void OnSignUp(object sender, EventArgs e)
         {
             var user = (UserModel)BindingContext;
             if (String.IsNullOrEmpty(user.Email))

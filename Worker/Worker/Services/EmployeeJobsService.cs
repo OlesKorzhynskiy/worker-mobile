@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Worker.Enums;
 using Worker.Models;
+using Xamarin.Forms;
 
 namespace Worker.Services
 {
@@ -14,7 +15,7 @@ namespace Worker.Services
         {
             Jobs = new List<EmployeeJobModel>()
             {
-                new EmployeeJobModel() {Id = 0, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now, 
+                new EmployeeJobModel() {Id = 0, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
                     Employer = new EmployerModel()
                     {
                         AverageRating = 4,
@@ -23,7 +24,7 @@ namespace Worker.Services
                         FirstName = "Іван",
                         LastName = "Петренко",
                         Phone = "094 12 12 4",
-                        Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.WaitingForEmployee, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
                 new EmployeeJobModel() {Id = 1, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
@@ -35,7 +36,7 @@ namespace Worker.Services
                         FirstName = "Іван",
                         LastName = "Петренко",
                         Phone = "094 12 12 4",
-                        Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.WaitingForEmployerConfirmation, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
                 new EmployeeJobModel() {Id = 2, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
@@ -47,7 +48,7 @@ namespace Worker.Services
                         FirstName = "Іван",
                         LastName = "Петренко",
                         Phone = "094 12 12 4",
-                        Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.WaitingForEmployeeConfirmation, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
                 new EmployeeJobModel() {Id = 3, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
@@ -59,7 +60,7 @@ namespace Worker.Services
                         FirstName = "Іван",
                         LastName = "Петренко",
                         Phone = "094 12 12 4",
-                        Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.RejectedByEmployer, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
                 new EmployeeJobModel() {Id = 4, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
@@ -71,7 +72,7 @@ namespace Worker.Services
                         FirstName = "Іван",
                         LastName = "Петренко",
                         Phone = "094 12 12 4",
-                        Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.RejectedByEmployee, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
                 new EmployeeJobModel() {Id = 5, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
@@ -83,7 +84,7 @@ namespace Worker.Services
                         FirstName = "Іван",
                         LastName = "Петренко",
                         Phone = "094 12 12 4",
-                        Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.InProgress, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 },
                 new EmployeeJobModel() {Id = 6, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
@@ -95,7 +96,7 @@ namespace Worker.Services
                         FirstName = "Іван",
                         LastName = "Петренко",
                         Phone = "094 12 12 4",
-                        Photo = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
                     }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.Done, Duration = new TimeSpan(2, 0, 0), Rate = 50
                 }
             };
