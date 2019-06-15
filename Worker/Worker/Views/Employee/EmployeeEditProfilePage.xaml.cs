@@ -57,6 +57,7 @@ namespace Worker.Views.Employee
             {
                 userViewModel.JobTypes.Add(jobType);
             }
+            userViewModel.JobTypesListHeight = userViewModel.JobTypes.Count * 20;
         }
     }
 }

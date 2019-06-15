@@ -27,7 +27,7 @@
                 <!-- Best job types -->
                 <StackLayout Spacing="2">
                     <Label Text="Типи робіт: " TextColor="{StaticResource TextColor}" FontSize="Medium" HorizontalOptions="Center"/>
-                    <ListView ItemsSource="{Binding JobTypes}" IsEnabled="False" SeparatorVisibility="None" RowHeight="20">
+                    <ListView ItemsSource="{Binding JobTypes}" IsEnabled="False" SeparatorVisibility="None" RowHeight="20" HeightRequest="{Binding JobTypesListHeight}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
