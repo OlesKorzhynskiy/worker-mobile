@@ -102,6 +102,11 @@ namespace Worker.Services
             };
         }
 
+        public static void Add(EmployeeJobModel job)
+        {
+            Jobs.Insert(0, job);
+        }
+
         public static List<EmployeeJobModel> GetNew()
         {
             return Jobs.Where(job => job.Status == StatusEnum.WaitingForEmployee).ToList();

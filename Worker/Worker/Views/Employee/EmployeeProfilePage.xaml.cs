@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Worker.ViewModels;
+using Worker.Views.Authentication;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -32,6 +33,12 @@ namespace Worker.Views.Employee
             var user = (EmployeeViewModel)BindingContext;
             var reviewsPage = new ReviewsPage() { BindingContext = user.ReceivedReviews };
             Navigation.PushAsync(reviewsPage);
+        }
+
+        private void OnSignOut(object sender, EventArgs e)
+        {
+            App.User = null;
+            App.Current.MainPage = new SignInPage();
         }
 
         protected override void OnAppearing()

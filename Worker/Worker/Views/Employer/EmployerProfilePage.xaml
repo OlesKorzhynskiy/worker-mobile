@@ -17,6 +17,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Grid.Children>
@@ -46,6 +47,9 @@
 
                     <!-- Edit profile -->
                     <Button Grid.Row="4" Text="Редагувати профайл" Clicked="OnEditProfilePage"/>
+
+                    <!-- Sign out profile -->
+                    <Button Grid.Row="5" Text="Вийти" Clicked="OnSignOut"/>
                 </Grid.Children>
             </Grid>
         </ScrollView>

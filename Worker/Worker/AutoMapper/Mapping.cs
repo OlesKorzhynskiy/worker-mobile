@@ -16,6 +16,9 @@ namespace Worker.AutoMapper
                 config.CreateMap<EmployerModel, UserModel>();
                 config.CreateMap<UserModel, EmployerModel>();
 
+                config.CreateMap<EmployeeJobModel, EmployerJobModel>();
+                config.CreateMap<EmployerJobModel, EmployeeJobModel>();
+
                 config.CreateMap<EmployeeJobModel, EmployeeJobViewModel>();
                 config.CreateMap<EmployeeJobViewModel, EmployeeJobModel>();
 

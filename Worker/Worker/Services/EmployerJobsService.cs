@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Worker.Enums;
 using Worker.Models;
 using Xamarin.Forms;
@@ -267,7 +268,18 @@ namespace Worker.Services
 
         public static void Add(EmployerJobModel job)
         {
+            if (Jobs.Count > 0)
+            {
+                job.Id = Jobs.Max(j => j.Id) + 1;
+            }
+            else
+            {
+                job.Id = 0;
+            }
             Jobs.Insert(0, job);
+            var employeeJob = Mapper.Map<EmployeeJobModel>(job);
+            employeeJob.Status = StatusEnum.WaitingForEmployee;
+            EmployeeJobsService.Add(employeeJob);
         }
 
         public static EmployerJobModel Get(int id)
