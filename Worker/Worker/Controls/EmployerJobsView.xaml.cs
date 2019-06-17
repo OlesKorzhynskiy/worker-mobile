@@ -29,7 +29,7 @@ namespace Worker.Controls
             get
             {
                 var elements = (ObservableCollection<EmployerJobViewModel>) BindingContext;
-                return elements?.Count * 100 ?? 0;
+                return elements?.Count * 160 ?? 0;
             }
         }
 

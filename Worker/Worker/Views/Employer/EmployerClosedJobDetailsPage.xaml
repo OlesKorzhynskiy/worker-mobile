@@ -26,39 +26,39 @@
                 <Grid.Children>
                     <Frame CornerRadius="0" Grid.Row="0" Grid.Column="0" BackgroundColor="White" Margin="2, 2, 1, 2" Padding="2">
                         <StackLayout Spacing="0">
-                            <Label Text="{Binding JobType.Name, StringFormat='Категорія: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
-                            <Label Text="{Binding StartDate, StringFormat='Початок: {0}', Converter={StaticResource DateTimeConverter}, ConverterParameter='dd.mm.yyyy'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
-                            <Label Text="{Binding Duration, StringFormat='Тривалість: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
-                            <Label Text="{Binding Rate, StringFormat='Рейт: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                            <Label Text="{Binding JobType.Name, StringFormat='Категорія: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                            <Label Text="{Binding StartDate, StringFormat='Початок: {0}', Converter={StaticResource DateTimeConverter}, ConverterParameter='dd.mm.yyyy'}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                            <Label Text="{Binding Duration, StringFormat='Тривалість: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                            <Label Text="{Binding Rate, StringFormat='Рейт: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
                         </StackLayout>
                     </Frame>
 
                     <Frame CornerRadius="0" Grid.Row="0" Grid.Column="1" BackgroundColor="White" Margin="1, 2, 2, 2" Padding="2">
                         <StackLayout Spacing="0">
-                            <Label Text="{Binding WorkedOnNumber, StringFormat='Працівників - {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
-                            <Label Text="Статус - завершено" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                            <Label Text="{Binding WorkedOnNumber, StringFormat='Працівників - {0}'}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                            <Label Text="Статус - завершено" TextColor="{StaticResource TextColor}" FontSize="Medium" />
                         </StackLayout>
                     </Frame>
 
-                    <Button Clicked="OnCreateJob" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="30" Padding="0" Text="Створити роботу заново" BackgroundColor="LightGray" TextColor="{StaticResource TextColor}" Margin="2" FontSize="Micro" />
+                    <Button Clicked="OnCreateJob" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Padding="0" Text="Створити роботу заново" BackgroundColor="LightGray" TextColor="{StaticResource TextColor}" Margin="2" FontSize="Small" />
 
                     <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Spacing="0">
-                        <Label Text="Працівники" TextColor="{StaticResource TextColor}" FontSize="Small" />
-                        <ListView ItemsSource="{Binding WorkedOnEmployees}" SeparatorVisibility="None" RowHeight="40" ItemSelected="ListView_OnItemSelected" HeightRequest="{Binding WorkedOnEmployeesListViewHeight}">
+                        <Label Text="Працівники" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                        <ListView ItemsSource="{Binding WorkedOnEmployees}" SeparatorVisibility="None" RowHeight="60" ItemSelected="ListView_OnItemSelected" HeightRequest="{Binding WorkedOnEmployeesListViewHeight}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Frame Padding="2, 0, 0, 0" Margin="2" CornerRadius="0">
+                                        <Frame Padding="2, 0, 0, 0" Margin="2, 5" CornerRadius="0">
                                             <Frame.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OpenUserProfileCommand, Source={x:Reference ClosedJobDetailsPage}}" CommandParameter="{Binding Employee.Id}"/>
                                             </Frame.GestureRecognizers>
                                             <StackLayout Spacing="0" BackgroundColor="White" Orientation="Horizontal">
                                                 <abstractions:CircleImage Source="{Binding Employee.Photo}" Margin="3" VerticalOptions="Center" />
                                                 <StackLayout VerticalOptions="Center" Margin="5, 0 ,0 ,0" Spacing="0">
-                                                    <Label Text="{Binding Employee.FirstName}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
-                                                    <Label Text="{Binding Employee.City_Age_Rating}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                                                    <Label Text="{Binding Employee.FirstName}" TextColor="{StaticResource TextColor}" FontSize="Small" />
+                                                    <Label Text="{Binding Employee.City_Age_Rating}" TextColor="{StaticResource TextColor}" FontSize="Small" />
                                                 </StackLayout>
-                                                <Button HorizontalOptions="EndAndExpand" Command="{Binding AddReviewCommand, Source={x:Reference ClosedJobDetailsPage}}" CommandParameter="{Binding Employee.Id}" Text="Залишити відгук" Margin="2" BackgroundColor="LightGray"  TextColor="{StaticResource TextColor}" Padding="5, 0" FontSize="Micro"/>
+                                                <Button HorizontalOptions="EndAndExpand" Command="{Binding AddReviewCommand, Source={x:Reference ClosedJobDetailsPage}}" CommandParameter="{Binding Employee.Id}" Text="Залишити відгук" Margin="2" BackgroundColor="LightGray"  TextColor="{StaticResource TextColor}" Padding="5, 0" FontSize="Small"/>
                                             </StackLayout>
                                         </Frame>
                                     </ViewCell>

@@ -45,12 +45,14 @@ namespace Worker.Views.Authentication
             if (TypePicker.Items[TypePicker.SelectedIndex] == "Employer")
             {
                 var employer = Mapper.Map<EmployerModel>(user);
-                App.User = employer;
+                var result = UsersService.Add(employer);
+                App.User = (EmployerModel)result;
             }
             else
             {
                 var employee = Mapper.Map<EmployeeModel>(user);
-                App.User = employee;
+                var result = UsersService.Add(employee);
+                App.User = (EmployeeModel)result;
             }
 
             App.Current.MainPage = new NavigationPage(new MainPage(true) { Title = "Редагувати" });

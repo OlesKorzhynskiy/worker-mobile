@@ -14,7 +14,7 @@ namespace Worker.ViewModels
             set
             {
                 _jobTypes = value;
-                JobTypesListHeight = JobTypes.Count * 20;
+                JobTypesListHeight = JobTypes.Count * 30;
                 OnPropertyChanged();
             }
         }

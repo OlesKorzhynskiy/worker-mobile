@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using Worker.Models;
+using Worker.Services;
 using Worker.ViewModels;
 using Worker.Views.Employee;
 using Worker.Views.Employer;
@@ -18,6 +19,9 @@ namespace Worker.Views
 
             if (IsEmployee)
             {
+                // set begginning statuses
+                EmployeeJobsService.SetDefaultStatuses();
+
                 var dashboardPage = new NavigationPage(new EmployeeDashboardTabbedPage())
                 {
                     Icon = new FileImageSource() { File = "profile.png" },

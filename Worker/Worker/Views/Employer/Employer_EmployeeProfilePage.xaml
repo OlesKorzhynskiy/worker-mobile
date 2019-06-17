@@ -22,22 +22,22 @@
                 <Grid.Children>
                     <!-- Main information -->
                     <StackLayout Grid.Row="0" Orientation="Horizontal" Margin="0, 0, 0, 10">
-                        <abstractions:CircleImage Source="{Binding Photo}" WidthRequest="48" HeightRequest="48" VerticalOptions="Center"/>
+                        <abstractions:CircleImage Source="{Binding Photo}" WidthRequest="92" HeightRequest="92" VerticalOptions="Center"/>
                         <StackLayout Orientation="Vertical" Margin="10, 0, 0, 0" Spacing="0">
-                            <Label Text="{Binding UserName}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
-                            <laavorRatingSwap:RatingImage InitialValue="{Binding AverageRating}" IsReadOnly="True" ImageWidth="20" ImageHeight="20" ItemsNumber="5" ImageSelect="starYellow.png" ImageDeselect="starWhite.gif" SpaceBetween="4" />
-                            <Label Text="{Binding CityAndAge}" TextColor="{StaticResource TextColor}" FontSize="Small" />
+                            <Label Text="{Binding UserName}" TextColor="{StaticResource TextColor}" FontSize="Large" FontAttributes="Bold"/>
+                            <laavorRatingSwap:RatingImage InitialValue="{Binding AverageRating}" IsReadOnly="True" ImageWidth="25" ImageHeight="25" ItemsNumber="5" ImageSelect="starYellow.png" ImageDeselect="starWhite.gif" SpaceBetween="4" />
+                            <Label Text="{Binding CityAndAge}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
                         </StackLayout>
                     </StackLayout>
 
                     <!-- Best job types -->
                     <StackLayout Grid.Row="1" Spacing="2">
-                        <Label Text="Найкращі типи робіт: " TextColor="{StaticResource TextColor}" FontSize="Medium" HorizontalOptions="Center"/>
-                        <ListView ItemsSource="{Binding JobTypes}" IsEnabled="False" SeparatorVisibility="None" RowHeight="20" HeightRequest="{Binding JobTypesListHeight}">
+                        <Label Text="Найкращі типи робіт: " TextColor="{StaticResource TextColor}" FontSize="Large" HorizontalOptions="Center"/>
+                        <ListView ItemsSource="{Binding JobTypes}" IsEnabled="False" SeparatorVisibility="None" RowHeight="30" HeightRequest="{Binding JobTypesListHeight}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Label Text="{Binding Name}" FontSize="Small" TextColor="{StaticResource TextColor}" />
+                                        <Label Text="{Binding Name}" FontSize="Medium" TextColor="{StaticResource TextColor}" />
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -46,8 +46,8 @@
 
                     <!-- About me -->
                     <StackLayout Grid.Row="2" Spacing="2">
-                        <Label Text="Про мене: " TextColor="{StaticResource TextColor}" FontSize="Medium" HorizontalOptions="Center"/>
-                        <Label Text="{Binding AboutMe}" TextColor="{StaticResource TextColor}" FontSize="Small"/>
+                        <Label Text="Про мене: " TextColor="{StaticResource TextColor}" FontSize="Large" HorizontalOptions="Center"/>
+                        <Label Text="{Binding AboutMe}" TextColor="{StaticResource TextColor}" FontSize="Medium"/>
                     </StackLayout>
 
                     <!-- Reviews -->

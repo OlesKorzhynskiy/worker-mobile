@@ -12,7 +12,7 @@ namespace Worker.Models
             ReceivedReviews = new List<ReviewModel>();
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public ImageSource Photo { get; set; }

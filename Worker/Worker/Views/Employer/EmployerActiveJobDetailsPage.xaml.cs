@@ -19,16 +19,16 @@ namespace Worker.Views.Employer
 		{
 			InitializeComponent ();
 
-            OpenUserProfileCommand = new Command<string>(OpenUserProfile);
+            OpenUserProfileCommand = new Command<int>(OpenUserProfile);
 
-            AcceptJobCommand = new Command<string>(AcceptJob);
-            RejectJobCommand = new Command<string>(RejectJob);
-            FinishJobCommand = new Command<string>(FinishJob);
-            StartJobCommand = new Command<string>(StartJob);
+            AcceptJobCommand = new Command<int>(AcceptJob);
+            RejectJobCommand = new Command<int>(RejectJob);
+            FinishJobCommand = new Command<int>(FinishJob);
+            StartJobCommand = new Command<int>(StartJob);
         }
 
         public ICommand OpenUserProfileCommand { get; }
-        private void OpenUserProfile(string userId)
+        private void OpenUserProfile(int userId)
         {
             var job = (EmployerJobViewModel)BindingContext;
             var user = job.Employees.First(employee => employee.Employee.Id == userId).Employee;
@@ -37,7 +37,7 @@ namespace Worker.Views.Employer
         }
 
         public ICommand AcceptJobCommand { get; }
-        private void AcceptJob(string userId)
+        private void AcceptJob(int userId)
         {
             var job = (EmployerJobViewModel) BindingContext;
             EmployerJobsService.AcceptByEmployer(job.Id, userId);
@@ -45,7 +45,7 @@ namespace Worker.Views.Employer
         }
 
         public ICommand RejectJobCommand { get; }
-        private void RejectJob(string userId)
+        private void RejectJob(int userId)
         {
             var job = (EmployerJobViewModel)BindingContext;
             EmployerJobsService.RejectByEmployer(job.Id, userId);
@@ -53,7 +53,7 @@ namespace Worker.Views.Employer
         }
 
         public ICommand FinishJobCommand { get; }
-        private void FinishJob(string userId)
+        private void FinishJob(int userId)
         {
             var job = (EmployerJobViewModel)BindingContext;
             EmployerJobsService.Finish(job.Id, userId);
@@ -61,7 +61,7 @@ namespace Worker.Views.Employer
         }
 
         public ICommand StartJobCommand { get; }
-        private void StartJob(string userId)
+        private void StartJob(int userId)
         {
             var job = (EmployerJobViewModel)BindingContext;
             EmployerJobsService.Start(job.Id, userId);

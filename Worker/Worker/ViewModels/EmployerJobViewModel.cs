@@ -166,15 +166,15 @@ namespace Worker.ViewModels
         public List<JobUserViewModel> AppliedEmployees => Employees.Where(employee =>
             employee.Status == StatusEnum.WaitingForEmployeeConfirmation ||
             employee.Status == StatusEnum.WaitingForEmployerConfirmation).ToList();
-        public int AppliedEmployeesListViewHeight => AppliedEmployees.Count * 40;
+        public int AppliedEmployeesListViewHeight => AppliedEmployees.Count * 60;
 
         public List<JobUserViewModel> AgreedEmployees => Employees.Where(employee =>
             employee.Status == StatusEnum.InProgress || employee.Status == StatusEnum.Done).ToList();
-        public int AgreedEmployeesListViewHeight => AgreedEmployees.Count * 40;
+        public int AgreedEmployeesListViewHeight => AgreedEmployees.Count * 60;
 
         public List<JobUserViewModel> WorkedOnEmployees => Employees.Where(employee =>
             employee.Status == StatusEnum.Done).ToList();
-        public int WorkedOnEmployeesListViewHeight => WorkedOnEmployees.Count * 40;
+        public int WorkedOnEmployeesListViewHeight => WorkedOnEmployees.Count * 60;
 
         public bool IsActive => !IsClosed;
     }

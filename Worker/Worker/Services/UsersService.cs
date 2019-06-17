@@ -98,9 +98,27 @@ namespace Worker.Services
             return Users.FirstOrDefault(user => user.Email == email);
         }
 
-        public static void Add(UserModel user)
+        public static UserModel Add(UserModel user)
         {
+            if (Users.Count > 0)
+            {
+                user.Id = Users.Max(u => u.Id) + 1;
+            }
+            else
+            {
+                user.Id = 0;
+            }
             Users.Add(user);
+            return user;
+        }
+
+        public static void AddReview(int id, ReviewModel review)
+        {
+            var user = Users.FirstOrDefault(u => u.Id == id);
+            if (user != null)
+            {
+                user.ReceivedReviews.Add(review);
+            }
         }
     }
 }

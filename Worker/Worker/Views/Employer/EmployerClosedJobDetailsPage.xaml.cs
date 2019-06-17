@@ -20,8 +20,8 @@ namespace Worker.Views.Employer
 		{
 			InitializeComponent ();
 
-            OpenUserProfileCommand = new Command<string>(OpenUserProfile);
-            AddReviewCommand = new Command<string>(AddReview);
+            OpenUserProfileCommand = new Command<int>(OpenUserProfile);
+            AddReviewCommand = new Command<int>(AddReview);
         }
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -45,7 +45,7 @@ namespace Worker.Views.Employer
         }
 
         public ICommand OpenUserProfileCommand { get; }
-        private void OpenUserProfile(string userId)
+        private void OpenUserProfile(int userId)
         {
             var job = (EmployerJobViewModel)BindingContext;
             var user = job.Employees.First(employee => employee.Employee.Id == userId).Employee;
@@ -53,9 +53,9 @@ namespace Worker.Views.Employer
             Navigation.PushAsync(employeePage);
         }
 
-        private string _employeeId;
+        private int _employeeId;
         public ICommand AddReviewCommand { get; }
-        private void AddReview(string employeeId)
+        private void AddReview(int employeeId)
         {
             var addReviewPage = new AddReviewPage() { BindingContext = new ReviewViewModel() };
             _employeeId = employeeId;

@@ -7,8 +7,8 @@ namespace Worker.ViewModels
 {
     public class UserViewModel : BaseViewModel
     {
-        private string _id;
-        public string Id
+        private int _id;
+        public int Id
         {
             get => _id;
             set

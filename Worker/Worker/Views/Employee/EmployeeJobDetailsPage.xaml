@@ -13,7 +13,7 @@
             <Setter Property="Padding" Value="0" />
             <Setter Property="HeightRequest" Value="32" />
             <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-            <Setter Property="FontSize" Value="Micro" />
+            <Setter Property="FontSize" Value="Small" />
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -31,29 +31,25 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.Children>
-                    <Frame CornerRadius="0" Grid.Row="0" Grid.Column="0" BackgroundColor="White" Margin="2, 2, 1, 2" Padding="2">
-                        <StackLayout Spacing="0">
-                            <Label Text="{Binding JobType.Name, StringFormat='Категорія: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
-                            <Label Text="{Binding StartDate, StringFormat='Початок: {0}', Converter={StaticResource DateTimeConverter}, ConverterParameter='dd.mm.yyyy'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
-                            <Label Text="{Binding Duration, StringFormat='Тривалість: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
-                            <Label Text="{Binding Rate, StringFormat='Рейт: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
+                    <Frame CornerRadius="0" Grid.Row="0" Grid.Column="0" BackgroundColor="White" Margin="2, 2, 1, 2" Padding="5">
+                        <StackLayout Spacing="4" VerticalOptions="Center">
+                            <Label Text="{Binding JobType.Name, StringFormat='Категорія: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                            <Label Text="{Binding StartDate, StringFormat='Початок: {0}', Converter={StaticResource DateTimeConverter}, ConverterParameter='dd.mm.yyyy'}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                            <Label Text="{Binding Duration, StringFormat='Тривалість: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                            <Label Text="{Binding Rate, StringFormat='Рейт: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
                         </StackLayout>
                     </Frame>
 
-                    <Frame CornerRadius="0" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="White" Margin="1, 2, 2, 2" Padding="2" x:Name="EmployerFrame">
-                        <StackLayout Spacing="0">
-                            <Label Text="Роботодавець" TextColor="{StaticResource TextColor}" FontSize="Micro" />
-                            <StackLayout Orientation="Horizontal">
-                                <abstractions:CircleImage Source="{Binding Employer.Photo}" Margin="3" VerticalOptions="Center" WidthRequest="32" HeightRequest="32"/>
-                                <StackLayout VerticalOptions="Center" Margin="5, 0 ,0 ,0" Spacing="0">
-                                    <Label Text="{Binding Employer.UserName}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
-                                    <Label Text="{Binding Employer.City_Age_Rating}" TextColor="{StaticResource TextColor}" FontSize="Micro" />
-                                </StackLayout>
-                            </StackLayout>
+                    <Frame CornerRadius="0" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="White" Margin="1, 2, 2, 2" Padding="5" x:Name="EmployerFrame">
+                        <StackLayout Spacing="5">
+                            <Label Text="Роботодавець:" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                            <abstractions:CircleImage Source="{Binding Employer.Photo}" Margin="3" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="64" HeightRequest="64"/>
+                            <Label Text="{Binding Employer.UserName}" TextColor="{StaticResource TextColor}" FontSize="Medium" HorizontalTextAlignment="Center" />
+                            <Label Text="{Binding Employer.City_Age_Rating}" TextColor="{StaticResource TextColor}" FontSize="Medium" HorizontalTextAlignment="Center" />
                         </StackLayout>
                     </Frame>
 
-                    <Label HorizontalTextAlignment="Center" Margin="0, 3, 0, 10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Status, Converter={StaticResource StatusEnumConverter}, StringFormat='Статус: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Small" />
+                    <Label HorizontalTextAlignment="Center" Margin="0, 3, 0, 10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Status, Converter={StaticResource StatusEnumConverter}, StringFormat='Статус: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
 
                     <!-- New -->
                     <Button IsVisible="{Binding IsNew}" Command="{Binding ApplyJobCommand}" Text="Податися" Grid.Row="2" Grid.Column="0" Margin="2, 2, 1, 2" Style="{StaticResource ButtonGeneralStyles}" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Worker.AutoMapper;
 using Worker.Models;
 using Worker.Services;
+using Worker.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Worker.Views;
@@ -21,7 +22,9 @@ namespace Worker
 
             Mapping.Initialize();
 
-            MainPage = new SignInPage();
+           //User = UsersService.Get("employer@gmail.com");
+
+            MainPage = new SignInPage(); //SignInPage
         }
 
         protected override void OnStart()

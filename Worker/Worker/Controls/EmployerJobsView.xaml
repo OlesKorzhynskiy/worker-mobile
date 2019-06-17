@@ -13,23 +13,24 @@
                 <Setter Property="BackgroundColor" Value="LightGray"/>
                 <Setter Property="HeightRequest" Value="25" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
 
     <ContentView.Content>
         <StackLayout Spacing="0">
-            <Button Clicked="OnCreateJob" Text="Створити роботу" TextColor="{StaticResource TextColor}" FontSize="Small" HeightRequest="40" Margin="0, 5" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="100" ItemSelected="ListView_OnItemSelected" HeightRequest="{Binding JobsListViewHeight, Source={x:Reference EmployerJobsPage}}">
+            <Button Clicked="OnCreateJob" Text="Створити роботу" TextColor="{StaticResource TextColor}" FontSize="Medium" Margin="0, 5" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="160" ItemSelected="ListView_OnItemSelected" HeightRequest="{Binding JobsListViewHeight, Source={x:Reference EmployerJobsPage}}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid Margin="0, 0, 0, 10" BackgroundColor="DarkGray" RowSpacing="0" ColumnSpacing="0">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="7*" />
+                                    <RowDefinition Height="3*" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="4*" />
@@ -40,15 +41,15 @@
 
                                 <Grid.Children>
                                     <StackLayout Padding="0" Grid.Row="0" Grid.Column="0" BackgroundColor="White" Margin="2, 2, 1, 1" >
-                                        <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding JobType.Name}" TextColor="{StaticResource TextColor}" FontSize="Small" />
+                                        <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding JobType.Name}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
                                     </StackLayout>
 
-                                    <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Padding="2, 0" BackgroundColor="White" Margin="1, 2, 2, 1">
-                                        <Label Text="{Binding Name}" TextColor="{StaticResource TextColor}" FontSize="Small"/>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Padding="5, 0" BackgroundColor="White" Margin="1, 2, 2, 1" Spacing="5">
+                                        <Label Text="{Binding Name}" TextColor="{StaticResource TextColor}" FontSize="Medium"/>
 
                                         <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding StartDate, Converter={StaticResource DateTimeConverter}, ConverterParameter='dd.mm.yyyy'}" TextColor="{StaticResource TextColor}" FontSize="Micro"/>
-                                            <Label Text="{Binding Duration, Converter={StaticResource TimeSpanToHoursConverter}, StringFormat='Тривалість: {0} год'}" TextColor="{StaticResource TextColor}" FontSize="Micro" HorizontalOptions="EndAndExpand"/>
+                                            <Label Text="{Binding StartDate, Converter={StaticResource DateTimeConverter}, ConverterParameter='dd.mm.yyyy'}" TextColor="{StaticResource TextColor}" FontSize="Small"/>
+                                            <Label Text="{Binding Duration, Converter={StaticResource TimeSpanToHoursConverter}, StringFormat='Тривалість: {0} год'}" TextColor="{StaticResource TextColor}" FontSize="Small" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
                                     </StackLayout>
 
