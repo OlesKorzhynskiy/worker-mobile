@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Worker.Views.Employer.EmployerSettingsPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="{StaticResource StandartPagePadding}" Spacing="0">
+                <Label Text="Електронна пошта:" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                <Entry Placeholder="Електронна пошта" Text="{Binding Email}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                <Button Text="Оновити" FontSize="Medium" Command="{Binding UpdateEmailCommand}" TextColor="{StaticResource TextColor}" HorizontalOptions="End" />
+
+                <Label Text="Номер телефону:" TextColor="{StaticResource TextColor}" FontSize="Medium" Margin="0, 20, 0, 0"/>
+                <Entry Placeholder="Телефон" Keyboard="Telephone" Text="{Binding Phone}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                <Button Text="Оновити" FontSize="Medium" Command="{Binding UpdatePhoneCommand}" TextColor="{StaticResource TextColor}" HorizontalOptions="End" />
+
+                <Label Text="Пароль:" TextColor="{StaticResource TextColor}" FontSize="Medium" Margin="0, 20, 0, 0"/>
+                <Entry Placeholder="Старий пароль" IsPassword="True" Text="{Binding OldPassword}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                <Entry Placeholder="Новий пароль" IsPassword="True" Text="{Binding NewPassword}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                <Entry Placeholder="Повторіть новий пароль" IsPassword="True" Text="{Binding ConfirmNewPassword}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                <Button Text="Оновити" FontSize="Medium" Command="{Binding UpdatePasswordCommand}" TextColor="{StaticResource TextColor}" HorizontalOptions="End" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

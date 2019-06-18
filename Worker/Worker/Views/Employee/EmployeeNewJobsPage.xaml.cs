@@ -19,12 +19,12 @@ namespace Worker.Views.Employee
 		{
 			InitializeComponent ();
 
-            BindingContext = Mapper.Map<ObservableCollection<JobViewModel>>(JobsService.GetNew());
+            BindingContext = Mapper.Map<ObservableCollection<EmployeeJobViewModel>>(EmployeeJobsService.GetNew());
         }
 
         protected override void OnAppearing()
         {
-            BindingContext = Mapper.Map<ObservableCollection<JobViewModel>>(JobsService.GetNew());
+            BindingContext = Mapper.Map<ObservableCollection<EmployeeJobViewModel>>(EmployeeJobsService.GetNew());
         }
     }
 }

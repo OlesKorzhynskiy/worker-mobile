@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Worker.Converters"
+             x:Class="Worker.Controls.EmployerJobsView"
+             x:Name="EmployerJobsPage">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:DateTimeConverter x:Key="DateTimeConverter" />
+            <converters:TimeSpanToHoursConverter x:Key="TimeSpanToHoursConverter" />
+            <converters:StatusEnumConverter x:Key="StatusEnumConverter" />
+            <Style x:Key="LabelGeneralStyles" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="LightGray"/>
+                <Setter Property="HeightRequest" Value="25" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+            <Button Clicked="OnCreateJob" Text="Створити роботу" TextColor="{StaticResource TextColor}" FontSize="Medium" Margin="0, 5" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="160" ItemSelected="ListView_OnItemSelected" HeightRequest="{Binding JobsListViewHeight, Source={x:Reference EmployerJobsPage}}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="0, 0, 0, 10" BackgroundColor="DarkGray" RowSpacing="0" ColumnSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="7*" />
+                                    <RowDefinition Height="3*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="3*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.Children>
+                                    <StackLayout Padding="0" Grid.Row="0" Grid.Column="0" BackgroundColor="White" Margin="2, 2, 1, 1" >
+                                        <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding JobType.Name}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Padding="5, 0" BackgroundColor="White" Margin="1, 2, 2, 1" Spacing="5">
+                                        <Label Text="{Binding Name}" TextColor="{StaticResource TextColor}" FontSize="Medium"/>
+
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding StartDate, Converter={StaticResource DateTimeConverter}, ConverterParameter='dd.mm.yyyy'}" TextColor="{StaticResource TextColor}" FontSize="Small"/>
+                                            <Label Text="{Binding Duration, Converter={StaticResource TimeSpanToHoursConverter}, StringFormat='Тривалість: {0} год'}" TextColor="{StaticResource TextColor}" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <Label IsVisible="{Binding IsActive}" Text="{Binding AppliedNumber, StringFormat='подалося: {0}'}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="2, 1, 1, 2" Style="{StaticResource LabelGeneralStyles}" />
+                                    <Label IsVisible="{Binding IsActive}" Text="{Binding WaitingForAnswerNumber, StringFormat='в очікуванні: {0}'}" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="1, 1, 2, 2" Style="{StaticResource LabelGeneralStyles}" />
+
+                                    <!-- Done -->
+                                    <Label IsVisible="{Binding IsClosed}" Text="{Binding WorkedOnNumber, StringFormat='працівників: {0}'}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource LabelGeneralStyles}" />
+
+                                </Grid.Children>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

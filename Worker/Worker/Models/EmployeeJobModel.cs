@@ -4,7 +4,7 @@ using Worker.Enums;
 
 namespace Worker.Models
 {
-    public class JobModel
+    public class EmployeeJobModel
     {
         public int Id { get; set; }
 

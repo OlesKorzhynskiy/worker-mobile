@@ -14,20 +14,20 @@
                 <Setter Property="HeightRequest" Value="25" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
-                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontSize" Value="Medium" />
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
 
     <ContentView.Content>
-        <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="110" ItemSelected="ListView_OnItemSelected">
+        <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="160" ItemSelected="ListView_OnItemSelected" HeightRequest="{Binding JobsListViewHeight, Source={x:Reference EmployeeJobsPage}}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid Margin="0, 10" BackgroundColor="DarkGray" RowSpacing="0" ColumnSpacing="0">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="7*" />
+                                <RowDefinition Height="3*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="4*" />
@@ -38,18 +38,18 @@
 
                             <Grid.Children>
                                 <StackLayout Padding="0" Grid.Row="0" Grid.Column="0" BackgroundColor="White" Margin="2, 2, 1, 1" >
-                                    <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding JobType.Name}" TextColor="{StaticResource TextColor}" FontSize="Small" />
+                                    <Label HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding JobType.Name}" TextColor="{StaticResource TextColor}" FontSize="Medium" />
                                 </StackLayout>
 
-                                <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Padding="2, 0" BackgroundColor="White" Margin="1, 2, 2, 1" Spacing="0">
-                                    <Label Text="{Binding Name}" TextColor="{StaticResource TextColor}" FontSize="Small"/>
+                                <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Padding="5, 0" BackgroundColor="White" Margin="1, 2, 2, 1" Spacing="5">
+                                    <Label Text="{Binding Name}" TextColor="{StaticResource TextColor}" FontSize="Medium"/>
 
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding StartDate, Converter={StaticResource DateTimeConverter}, ConverterParameter='dd.mm.yyyy'}" TextColor="{StaticResource TextColor}" FontSize="Micro"/>
-                                        <Label Text="{Binding Duration, Converter={StaticResource TimeSpanToHoursConverter}, StringFormat='Тривалість: {0} год'}" TextColor="{StaticResource TextColor}" FontSize="Micro" HorizontalOptions="EndAndExpand"/>
+                                        <Label Text="{Binding StartDate, Converter={StaticResource DateTimeConverter}, ConverterParameter='dd.mm.yyyy'}" TextColor="{StaticResource TextColor}" FontSize="Small"/>
+                                        <Label Text="{Binding Duration, Converter={StaticResource TimeSpanToHoursConverter}, StringFormat='Тривалість: {0} год'}" TextColor="{StaticResource TextColor}" FontSize="Small" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
 
-                                    <Label Text="{Binding Status, Converter={StaticResource StatusEnumConverter}, StringFormat='Статус: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Micro"/>
+                                    <Label Text="{Binding Status, Converter={StaticResource StatusEnumConverter}, StringFormat='Статус: {0}'}" TextColor="{StaticResource TextColor}" FontSize="Small"/>
                                 </StackLayout>
 
                                 <!-- New -->
@@ -75,6 +75,9 @@
 
                                 <!-- Removed -->
                                 <Button IsVisible="{Binding IsRemoved}" Command="{Binding ReturnJobCommand}" Text="Відновити" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" />
+
+                                <!-- In progress -->
+                                <Button IsVisible="{Binding IsInProgress}" Text="Виконується" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="2, 1, 2, 2" Style="{StaticResource ButtonGeneralStyles}" IsEnabled="False" />
                             </Grid.Children>
                         </Grid>
                     </ViewCell>

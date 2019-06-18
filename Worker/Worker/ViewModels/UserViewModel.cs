@@ -1,10 +1,28 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
+using Xamarin.Forms;
 
 namespace Worker.ViewModels
 {
     public class UserViewModel : BaseViewModel
     {
+        public UserViewModel()
+        {
+            BirthDate = DateTime.Now;
+        }
+
+        private int _id;
+        public int Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string _firstName;
         public string FirstName
         {
@@ -27,8 +45,8 @@ namespace Worker.ViewModels
             }
         }
 
-        private string _photo;
-        public string Photo
+        private ImageSource _photo;
+        public ImageSource Photo
         {
             get => _photo;
             set
@@ -82,6 +100,17 @@ namespace Worker.ViewModels
             }
         }
 
+        private string _aboutMe;
+        public string AboutMe
+        {
+            get => _aboutMe;
+            set
+            {
+                _aboutMe = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ObservableCollection<ReviewViewModel> _receivedReviews;
         public ObservableCollection<ReviewViewModel> ReceivedReviews
         {
@@ -112,5 +141,7 @@ namespace Worker.ViewModels
         public string UserName => FirstName + " " + LastName;
 
         public string CityAndAge => City + ", " + Age;
+
+        public string City_Age_Rating => Age + "р. " + City + ", " + AverageRating;
     }
 }

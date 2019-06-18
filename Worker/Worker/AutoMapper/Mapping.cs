@@ -10,20 +10,38 @@ namespace Worker.AutoMapper
         {
             Mapper.Initialize(config =>
             {
+                config.CreateMap<EmployeeModel, UserModel>();
+                config.CreateMap<UserModel, EmployeeModel>();
+
+                config.CreateMap<EmployerModel, UserModel>();
+                config.CreateMap<UserModel, EmployerModel>();
+
+                config.CreateMap<EmployeeJobModel, EmployerJobModel>();
+                config.CreateMap<EmployerJobModel, EmployeeJobModel>();
+
+                config.CreateMap<EmployeeJobModel, EmployeeJobViewModel>();
+                config.CreateMap<EmployeeJobViewModel, EmployeeJobModel>();
+
                 config.CreateMap<EmployeeModel, EmployeeViewModel>();
                 config.CreateMap<EmployeeViewModel, EmployeeModel>();
 
-                config.CreateMap<EmployeeModel, EmployeeSettingsViewModel>();
-                config.CreateMap<EmployeeSettingsViewModel, EmployeeModel>();
+                config.CreateMap<EmployerJobModel, EmployerJobViewModel>();
+                config.CreateMap<EmployerJobViewModel, EmployerJobModel>();
 
                 config.CreateMap<EmployerModel, EmployerViewModel>();
                 config.CreateMap<EmployerViewModel, EmployerModel>();
 
-                config.CreateMap<JobModel, JobViewModel>();
-                config.CreateMap<JobViewModel, JobModel>();
+                config.CreateMap<EmployeeModel, SettingsViewModel>();
+                config.CreateMap<SettingsViewModel, EmployeeModel>();
+
+                config.CreateMap<EmployerModel, SettingsViewModel>();
+                config.CreateMap<SettingsViewModel, EmployerModel>();
 
                 config.CreateMap<JobTypeModel, JobTypeViewModel>();
                 config.CreateMap<JobTypeViewModel, JobTypeModel>();
+
+                config.CreateMap<JobUserModel, JobUserViewModel>();
+                config.CreateMap<JobUserViewModel, JobUserModel>();
 
                 config.CreateMap<ReviewModel, ReviewViewModel>();
                 config.CreateMap<ReviewViewModel, ReviewModel>();

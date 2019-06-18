@@ -1,11 +1,12 @@
 ﻿using System.Windows.Input;
+using Worker.Models;
 using Xamarin.Forms;
 
 namespace Worker.ViewModels
 {
-    public class EmployeeSettingsViewModel : BaseViewModel
+    public class SettingsViewModel : BaseViewModel
     {
-        public EmployeeSettingsViewModel()
+        public SettingsViewModel()
         {
             UpdateEmailCommand = new Command(UpdateEmail);
             UpdatePhoneCommand = new Command(UpdatePhone);
@@ -29,9 +30,10 @@ namespace Worker.ViewModels
             get => _isVisible;
             set
             {
-                if (App.User.IsVisible != value)
+                var user = (EmployeeModel)App.User;
+                if (user.IsVisible != value)
                 {
-                    App.User.IsVisible = value;
+                    user.IsVisible = value;
                 }
                 _isVisible = value;
                 OnPropertyChanged();

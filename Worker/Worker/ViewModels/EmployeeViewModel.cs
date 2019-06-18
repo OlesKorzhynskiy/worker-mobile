@@ -1,20 +1,12 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Worker.Enums;
+using Worker.Services;
 
 namespace Worker.ViewModels
 {
     public class EmployeeViewModel : UserViewModel
     {
-        private string _aboutMe;
-        public string AboutMe
-        {
-            get => _aboutMe;
-            set
-            {
-                _aboutMe = value;
-                OnPropertyChanged();
-            }
-        }
-
         private ObservableCollection<JobTypeViewModel> _jobTypes;
         public ObservableCollection<JobTypeViewModel> JobTypes
         {
@@ -22,6 +14,18 @@ namespace Worker.ViewModels
             set
             {
                 _jobTypes = value;
+                JobTypesListHeight = JobTypes.Count * 30;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _jobTypesListHeight;
+        public int JobTypesListHeight
+        {
+            get => _jobTypesListHeight;
+            set
+            {
+                _jobTypesListHeight = value;
                 OnPropertyChanged();
             }
         }

@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace Worker.ViewModels
 {
-    public class JobViewModel : BaseViewModel
+    public class EmployeeJobViewModel : BaseViewModel
     {
-        public JobViewModel()
+        public EmployeeJobViewModel()
         {
             RemoveJobCommand = new Command(RemoveJob);
             ApplyJobCommand = new Command(ApplyJob);
@@ -131,7 +131,7 @@ namespace Worker.ViewModels
         public ICommand RemoveJobCommand { get; }
         private void RemoveJob()
         {
-            JobsService.Remove(Id);
+            EmployeeJobsService.Remove(Id);
             Status = StatusEnum.Removed;
             UpdateView();
         }
@@ -139,7 +139,7 @@ namespace Worker.ViewModels
         public ICommand ApplyJobCommand { get; }
         private void ApplyJob()
         {
-            JobsService.Apply(Id);
+            EmployeeJobsService.Apply(Id);
             Status = StatusEnum.WaitingForEmployerConfirmation;
             UpdateView();
         }
@@ -147,7 +147,7 @@ namespace Worker.ViewModels
         public ICommand RejectJobCommand { get; }
         private void RejectJob()
         {
-            JobsService.RejectByEmployee(Id);
+            EmployeeJobsService.RejectByEmployee(Id);
             Status = StatusEnum.RejectedByEmployee;
             UpdateView();
         }
@@ -155,7 +155,7 @@ namespace Worker.ViewModels
         public ICommand AcceptJobCommand { get; }
         private void AcceptJob()
         {
-            JobsService.AcceptByEmployee(Id);
+            EmployeeJobsService.AcceptByEmployee(Id);
             Status = StatusEnum.InProgress;
             UpdateView();
         }
@@ -163,7 +163,7 @@ namespace Worker.ViewModels
         public ICommand ReturnJobCommand { get; }
         private void ReturnJob()
         {
-            JobsService.Return(Id);
+            EmployeeJobsService.Return(Id);
             Status = StatusEnum.WaitingForEmployee;
             UpdateView();
         }

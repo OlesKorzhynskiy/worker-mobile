@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Worker.Helpers;
+using Worker.Interfaces;
 using Worker.Models;
 using Worker.Services;
 using Worker.ViewModels;
@@ -28,8 +31,27 @@ namespace Worker.Views.Employee
         private void OnSaveProfile(object sender, EventArgs e)
         {
             var userViewModel = (EmployeeViewModel)BindingContext;
-            App.User = Mapper.Map<EmployeeModel>(userViewModel);
+            var user = UsersService.Add(Mapper.Map<EmployeeModel>(userViewModel));
+            App.User = user;
             Navigation.PopAsync();
+        }
+
+        private async void OnUploadPhotoClick(object sender, EventArgs e)
+        {
+            var userViewModel = (EmployeeViewModel)BindingContext;
+
+            var button = (Button)sender;
+            button.IsEnabled = false;
+            var picturePicker = DependencyService.Get<IPicturePicker>();
+            Stream stream = await picturePicker.GetImageStreamAsync();
+
+            if (stream != null)
+            {
+                var bytes = ConverterHelper.ReadFully(stream);
+                userViewModel.Photo = ImageSource.FromStream(() => new MemoryStream(bytes));
+            }
+
+            button.IsEnabled = true;
         }
 
         private void OnAddJobTypes(object sender, EventArgs e)
@@ -57,6 +79,7 @@ namespace Worker.Views.Employee
             {
                 userViewModel.JobTypes.Add(jobType);
             }
+            userViewModel.JobTypesListHeight = userViewModel.JobTypes.Count * 30;
         }
     }
 }

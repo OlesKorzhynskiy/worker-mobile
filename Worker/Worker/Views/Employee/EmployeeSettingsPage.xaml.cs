@@ -17,12 +17,12 @@ namespace Worker.Views.Employee
 		{
 			InitializeComponent ();
 
-            BindingContext = Mapper.Map<EmployeeSettingsViewModel>(App.User);
+            BindingContext = Mapper.Map<SettingsViewModel>(App.User);
         }
 
         protected override void OnAppearing()
         {
-            BindingContext = Mapper.Map<EmployeeSettingsViewModel>(App.User);
+            BindingContext = Mapper.Map<SettingsViewModel>(App.User);
         }
     }
 }

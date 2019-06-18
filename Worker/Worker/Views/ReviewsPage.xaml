@@ -5,6 +5,7 @@
              xmlns:laavorRatingSwap="clr-namespace:LaavorRatingSwap;assembly=RatingAndSwap"
              xmlns:converters="clr-namespace:Worker.Converters"
              x:Class="Worker.Views.ReviewsPage"
+             x:Name="ReviewsListPage"
              Title="Відгуки">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -14,20 +15,20 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="{StaticResource StandartPagePadding}">
-                <ListView ItemsSource="{Binding .}" IsEnabled="False" SeparatorVisibility="None" HasUnevenRows="True">
+            <StackLayout Padding="{StaticResource StandartPagePadding}" HeightRequest="{Binding ReviewsListViewHeight, Source={x:Reference ReviewsListPage}}">
+                <ListView ItemsSource="{Binding .}" SeparatorVisibility="None" RowHeight="170" ItemSelected="ListView_OnItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Margin="0, 10">
                                     <StackLayout Orientation="Horizontal">
-                                        <abstractions:CircleImage Source="{Binding Path=Reviewer.Photo}" Aspect="AspectFill" WidthRequest="48" HeightRequest="48" />
+                                        <abstractions:CircleImage Source="{Binding Path=Reviewer.Photo}" Aspect="AspectFill" WidthRequest="64" HeightRequest="64" />
                                         <StackLayout Margin="10, 0, 0, 0" Spacing="2">
-                                            <Label Text="{Binding Reviewer.FirstName}" FontSize="Small" TextColor="{StaticResource TextColor}" />
-                                            <Label Text="{Binding Reviewer.City}" FontSize="Small" TextColor="{StaticResource TextColor}" />
-                                            <Label Text="{Binding Date, Converter={StaticResource DateTimeConverter}, ConverterParameter='D'}" FontSize="Micro" TextColor="{StaticResource TextColor}" />
+                                            <Label Text="{Binding Reviewer.FirstName}" FontSize="Medium" TextColor="{StaticResource TextColor}" />
+                                            <Label Text="{Binding Reviewer.City}" FontSize="Medium" TextColor="{StaticResource TextColor}" />
+                                            <Label Text="{Binding Date, Converter={StaticResource DateTimeConverter}, ConverterParameter='D'}" FontSize="Small" TextColor="{StaticResource TextColor}" />
                                         </StackLayout>
-                                        <laavorRatingSwap:RatingImage Margin="0, 0, 0, 5" VerticalOptions="Start" InitialValue="{Binding Rating}" IsReadOnly="True" ImageWidth="10" ImageHeight="10" ItemsNumber="5" ImageSelect="starYellow.png" ImageDeselect="starWhite.gif" SpaceBetween="1" HorizontalOptions="EndAndExpand" />
+                                        <laavorRatingSwap:RatingImage Margin="0, 0, 0, 5" VerticalOptions="Start" InitialValue="{Binding Rating}" IsReadOnly="True" ImageWidth="15" ImageHeight="15" ItemsNumber="5" ImageSelect="starYellow.png" ImageDeselect="starWhite.gif" SpaceBetween="1" HorizontalOptions="EndAndExpand" />
                                     </StackLayout>
                                     <Label Margin="0, 5, 0, 0" Text="{Binding Text}" FontSize="Small" TextColor="{StaticResource TextColor}" />
                                 </StackLayout>
