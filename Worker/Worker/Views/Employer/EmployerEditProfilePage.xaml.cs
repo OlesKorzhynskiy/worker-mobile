@@ -10,6 +10,7 @@ using AutoMapper;
 using Worker.Helpers;
 using Worker.Interfaces;
 using Worker.Models;
+using Worker.Services;
 using Worker.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -26,7 +27,8 @@ namespace Worker.Views.Employer
 
         private void OnSaveProfile(object sender, EventArgs e)
         {
-            App.User = Mapper.Map<EmployerModel>((EmployerViewModel)BindingContext);
+            var user = UsersService.Add(Mapper.Map<EmployerModel>((EmployerViewModel)BindingContext));
+            App.User = user;
             Navigation.PopAsync();
         }
 

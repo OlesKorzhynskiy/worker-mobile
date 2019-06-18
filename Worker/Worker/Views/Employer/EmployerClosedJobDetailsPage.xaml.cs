@@ -39,6 +39,7 @@ namespace Worker.Views.Employer
             job.StartDate = DateTime.Now;
             job.Employees = new List<JobUserViewModel>();
             job.IsClosed = false;
+            job.IsLookingForNewEmployees = true;
             job.JobType = job.JobTypes.First(jobType => jobType.Name == context.JobType.Name);
             var createJobPage = new EmployerCreateJobPage() { BindingContext = job };
             Navigation.PushAsync(createJobPage);

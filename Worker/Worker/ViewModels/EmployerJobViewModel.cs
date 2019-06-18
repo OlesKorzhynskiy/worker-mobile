@@ -20,6 +20,7 @@ namespace Worker.ViewModels
             JobType = JobTypes.FirstOrDefault();
             Employees = new List<JobUserViewModel>();
             IsLookingForNewEmployees = true;
+            StartDate = DateTime.Now;
         }
 
         private int _id;

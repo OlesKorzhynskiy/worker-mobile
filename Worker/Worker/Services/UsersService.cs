@@ -12,89 +12,103 @@ namespace Worker.Services
 
         static UsersService()
         {
-            Users = new List<UserModel>();
-            var employee = new EmployeeModel()
+            Users = new List<UserModel>()
             {
-                FirstName = "Ольга",
-                LastName = "Ровінська",
-                City = "Львів",
-                BirthDate = new DateTime(1998, 4, 10),
-                Photo = ImageSource.FromUri(new Uri("https://media.licdn.com/dms/image/C5603AQGAzsg5qZRzzg/profile-displayphoto-shrink_200_200/0?e=1562803200&v=beta&t=WVi627qWCw58aEtQ2DI-jirm3WVdjQWLQCEvy4eOV1A")),
-                Phone = "093 521 39 49",
-                AverageRating = 4,
-                AboutMe = "some text asdf ljkdsafj me , wehere ai tell smth sabout gme very interstetng, adsklfjdksla sdn somer more infroarsaf",
-                Email = "employee@gmail.com",
-                IsVisible = true,
-                Password = "123456",
-                JobTypes = new List<JobTypeModel>()
+                new EmployeeModel()
                 {
-                    new JobTypeModel() {Id = 0, Name = "Вантажні роботи"},
-                    new JobTypeModel() {Id = 1, Name = "Діти"},
+                    Id = 0,
+                    FirstName = "Анна",
+                    LastName = "Паномаренко",
+                    City = "Львів",
+                    BirthDate = new DateTime(1996, 4, 10),
+                    Photo = ImageSource.FromUri(new Uri(
+                        "http://blogspay.com/wp-content/uploads/2018/07/istock-526142422.jpg")),
+                    Phone = "093 125 31 51",
+                    AverageRating = 4,
+                    AboutMe = "",
+                    Email = "anna",
+                    IsVisible = true,
+                    Password = "1",
+                    JobTypes = new List<JobTypeModel>()
+                    {
+                        new JobTypeModel() {Id = 1, Name = "Діти"},
+                        new JobTypeModel() {Id = 2, Name = "Прибирання"}
+                    }
                 },
-                ReceivedReviews = new List<ReviewModel>()
+                new EmployeeModel()
                 {
-                    new ReviewModel()
+                    Id = 1,
+                    FirstName = "Остап",
+                    LastName = "Шевченко",
+                    City = "Київ",
+                    BirthDate = new DateTime(1994, 12, 3),
+                    Photo = ImageSource.FromUri(new Uri("https://www.jamestownsun.com/sites/default/files/styles/16x9_620/public/fieldimages/1/0927/1a7dwqhtwnbfimhbzydytkh71nl-pqa5s.jpg?itok=Dh7ajF49")),
+                    Phone = "093 984 65 12",
+                    AverageRating = 0,
+                    AboutMe = "",
+                    Email = "o",
+                    IsVisible = true,
+                    Password = "1",
+                    JobTypes = new List<JobTypeModel>()
                     {
-                        Rating = 3,
-                        Text = "Після відвідання цього туру, лишолося багато приємних вражень. Серед переваг я можу виділити наступні: гарний сервіс, гарна природа і чисті номери. Серед недоліків: фвіфіваіб, фіа івафіафів і афівжаолждфвоіалдж",
-                        Reviewer = new UserModel() {FirstName = "Сергій", LastName = "Шевченко", City = "Львів, Рясне",
-                            Photo = ImageSource.FromUri(new Uri("https://jbwebanalytics.com/wp-content/uploads/2015/11/Brian-Toomey.png"))
-                        },
-                        Date = DateTime.Now
-                    },
-                    new ReviewModel()
-                    {
-                        Rating = 4,
-                        Text = "Після відвідання цього туру, лишолося багато приємних вражень.",
-                        Reviewer = new UserModel() {FirstName = "Оля", LastName = "Ровінська", City = "Львів, Рясне",
-                            Photo = ImageSource.FromUri(new Uri("https://www.unitedagents.co.uk/sites/default/files/styles/client_thumb_400x400/public/thumbnails/image/Headshot%201.PNG?itok=kHVT8TNT&c=277a71a7cdf9a41c57ff520dc593f271"))
-                        },
-                        Date = new DateTime(2017, 11, 25)
-                    },
+                        new JobTypeModel() {Id = 0, Name = "Вантажні роботи"},
+                        new JobTypeModel() {Id = 2, Name = "Прибирання"},
+                        new JobTypeModel() {Id = 3, Name = "Тварини"}
+                    }
+                },
+                new EmployerModel()
+                {
+                    Id = 2,
+                    FirstName = "Андрій",
+                    LastName = "Тищенко",
+                    City = "Львів",
+                    BirthDate = new DateTime(1978, 1, 5),
+                    Photo = ImageSource.FromUri(new Uri("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmUXsM8d3e7QSEdyB6gtrnxDb20n8aQdQTT9scz1MvLpaYgC5g")),
+                    Phone = "093 152 12 52",
+                    Company = "Softserve",
+                    AverageRating = 4,
+                    AboutMe = "",
+                    Email = "a",
+                    Password = "1"
                 }
             };
-            Users.Add(employee);
 
-            var employer = new EmployerModel()
+            var employer = Get("andriy@gmail.com");
+            employer.ReceivedReviews = new List<ReviewModel>()
             {
-                FirstName = "Ольга",
-                LastName = "Ровінська",
-                City = "Львів",
-                BirthDate = new DateTime(1998, 4, 10),
-                Photo = ImageSource.FromUri(new Uri("https://media.licdn.com/dms/image/C5603AQGAzsg5qZRzzg/profile-displayphoto-shrink_200_200/0?e=1562803200&v=beta&t=WVi627qWCw58aEtQ2DI-jirm3WVdjQWLQCEvy4eOV1A")),
-                Phone = "093 521 39 49",
-                Company = "Softserve",
-                AverageRating = 4,
-                AboutMe = "some text asdf ljkdsafj me , wehere ai tell smth sabout gme very interstetng, adsklfjdksla sdn somer more infroarsaf",
-                Email = "employer@gmail.com",
-                Password = "123456",
-                ReceivedReviews = new List<ReviewModel>()
+                new ReviewModel()
                 {
-                    new ReviewModel()
-                    {
-                        Rating = 3,
-                        Text = "Після відвідання цього туру, лишолося багато приємних вражень. Серед переваг я можу виділити наступні: гарний сервіс, гарна природа і чисті номери. Серед недоліків: фвіфіваіб, фіа івафіафів і афівжаолждфвоіалдж",
-                        Reviewer = new UserModel() {FirstName = "Сергій", LastName = "Шевченко", City = "Львів, Рясне",
-                            Photo = ImageSource.FromUri(new Uri("https://jbwebanalytics.com/wp-content/uploads/2015/11/Brian-Toomey.png"))
-                        },
-                        Date = DateTime.Now
-                    },
-                    new ReviewModel()
-                    {
-                        Rating = 4,
-                        Text = "Після відвідання цього туру, лишолося багато приємних вражень.",
-                        Reviewer = new UserModel() {FirstName = "Оля", LastName = "Ровінська", City = "Львів, Рясне",
-                            Photo = ImageSource.FromUri(new Uri("https://www.unitedagents.co.uk/sites/default/files/styles/client_thumb_400x400/public/thumbnails/image/Headshot%201.PNG?itok=kHVT8TNT&c=277a71a7cdf9a41c57ff520dc593f271"))
-                        },
-                        Date = new DateTime(2017, 11, 25)
-                    },
+                    Rating = 4,
+                    Reviewer = UsersService.Get("ostap@gmail.com"),
+                    Text =  "Було приємно працювати для Андрія. Робота була нескладна, оцінювава справедливо. Ніяких непорозумінь в роботі не виникло"
                 }
             };
-            Users.Add(employer);
+
+            var employee = Get("anna@gmail.com");
+            employee.ReceivedReviews = new List<ReviewModel>()
+            {
+                new ReviewModel()
+                {
+                    Rating = 4,
+                    Reviewer = UsersService.Get("andriy@gmail.com"),
+                    Text =  "Анна показала себе як відповідальна і сумлінна людина. Роботу виконувала вчасно і якісно. Ніяких непорозуінь в роботі не було"
+                }
+            };
         }
 
         public static UserModel Get(string email)
         {
+            // remove
+            if (email == "andriy@gmail.com")
+            {
+                email = "a";
+            } else if (email == "anna@gmail.com")
+            {
+                email = "anna";
+            } else if (email == "ostap@gmail.com")
+            {
+                email = "o";
+            }
             return Users.FirstOrDefault(user => user.Email == email);
         }
 

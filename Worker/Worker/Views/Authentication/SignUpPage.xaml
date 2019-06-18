@@ -4,12 +4,12 @@
              x:Class="Worker.Views.Authentication.SignUpPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#A6EFE7" Spacing="0">
-            <Label Text="WORKER" HorizontalOptions="CenterAndExpand" FontSize="50" TextColor="White" />
-            <Label Text="Complete this form to join Worker and start searching" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Margin="10" FontSize="Medium" TextColor="White"/>
-            <Entry Text="{Binding Email}" Placeholder="Email" FontSize="Small" FontAttributes="300" Margin="15, 0" />
-            <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="True" FontSize="Small" FontAttributes="300" Margin="15, 0" />
-            <Picker x:Name="TypePicker" FontSize="Small" FontAttributes="300" Margin="15, 0">
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="WORKER" HorizontalOptions="CenterAndExpand" FontSize="50" />
+            <Label Text="Complete this form to join Worker and start searching" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Margin="10" FontSize="Medium"/>
+            <Entry Text="{Binding Email}" Placeholder="Email" FontSize="Medium" FontAttributes="300" Margin="15, 0" />
+            <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="True" FontSize="Medium" FontAttributes="300" Margin="15, 0" />
+            <Picker x:Name="TypePicker" FontSize="Medium" FontAttributes="300" Margin="15, 0">
                 <Picker.Items>
                     <x:String>Employer</x:String>
                     <x:String>Employee</x:String>
@@ -18,8 +18,8 @@
             <Label TextColor="Red" FontSize="Small" x:Name="ErrorLabel" HorizontalOptions="CenterAndExpand"/>
             <Button Text="Sign up" CornerRadius="30" Margin="10, 0" BackgroundColor="LightGray" TextColor="Black" VerticalOptions="EndAndExpand" Clicked="OnSignUp"></Button>
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 10">
-                <Label Text="Has an account?" FontSize="Small" TextColor="White"/>
-                <Label x:Name="SignInLabel" Text="Sign in" FontSize="Small" TextColor="Green" />
+                <Label Text="Has an account?" FontSize="Small"/>
+                <Label x:Name="SignInLabel" Text="Sign in" FontSize="Small" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

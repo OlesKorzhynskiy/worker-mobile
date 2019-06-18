@@ -20,40 +20,79 @@ namespace Worker.Services
                 new EmployerJobModel()
                 {
                     Id = 0,
-                    Description = "Посидіти з моєю дитиноюf kajsdkl;f;j skaldj fklsad jkl;f jksld;ajf klsdjalkfjsdkl;fjkl asdjkfl jew;kjfio jsdo;aj fk;jsd ;ofjweio;j f;ksdjakl fjsdaklj foewjoif jdsjk afkl;j ioewjfoi ewjafo jdskl;ajf kdsajf iowej pfjkdsj fkldsja fkjaofj weoipjf kjdsk ;fjk adsjfiewjpf ojsdklaj fklj",
-                    StartDate = DateTime.Now,
-                    Employer = (EmployerModel)UsersService.Get("employer@gmail.com"),
+                    Name = "Розвантаження судна",
+                    Description = "Потрібен чоловік для розвантаження пароплава в Одеському порті",
+                    StartDate = DateTime.Now.AddDays(5),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
                     JobType = new JobTypeModel() { Id = 0, Name = "Вантажні роботи" },
-                    Name = "Сидіти з дитиною",
-                    Duration = new TimeSpan(2, 0, 0),
-                    Rate = 50,
-                    Employees = new List<JobUserModel>()
-                    {
-                        new JobUserModel()
-                        {
-                            Employee = (EmployeeModel)UsersService.Get("employee@gmail.com"),
-                            Status = StatusEnum.Done
-                        }
-                    }
+                    Duration = new TimeSpan(3, 0, 0),
+                    Rate = 50
                 },
                 new EmployerJobModel()
                 {
                     Id = 1,
-                    Description = "Посидіти з моєю дитиноюf kajsdkl;f;j skaldj fklsad jkl;f jksld;ajf klsdjalkfjsdkl;fjkl asdjkfl jew;kjfio jsdo;aj fk;jsd ;ofjweio;j f;ksdjakl fjsdaklj foewjoif jdsjk afkl;j ioewjfoi ewjafo jdskl;ajf kdsajf iowej pfjkdsj fkldsja fkjaofj weoipjf kjdsk ;fjk adsjfiewjpf ojsdklaj fklj",
-                    StartDate = DateTime.Now,
-                    Employer = (EmployerModel)UsersService.Get("employer@gmail.com"),
+                    Name = "Перевезення і розвантаження продукції",
+                    Description = "Потрібна людина з машиною для доставки речей у нову квартиру",
+                    StartDate = DateTime.Now.AddDays(1),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
                     JobType = new JobTypeModel() { Id = 0, Name = "Вантажні роботи" },
-                    Name = "Сидіти з дитиною",
+                    Duration = new TimeSpan(8, 0, 0),
+                    Rate = 50
+                },
+                new EmployerJobModel()
+                {
+                    Id = 2,
+                    Name = "Догляд за дітьми",
+                    Description = "Потрібна людина для догляду за 2 дітьми віку 8 і 10 років",
+                    StartDate = DateTime.Now.AddDays(2),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
+                    JobType = new JobTypeModel() {Id = 1, Name = "Діти"},
+                    Duration = new TimeSpan(4, 0, 0),
+                    Rate = 40
+                },
+                new EmployerJobModel()
+                {
+                    Id = 3,
+                    Name = "Приватне навчання дітей на дому",
+                    Description = "Потрібен викладач для дитини віком 12 років з точних предметів",
+                    StartDate = DateTime.Now.AddDays(4),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
+                    JobType = new JobTypeModel() {Id = 1, Name = "Діти"},
                     Duration = new TimeSpan(2, 0, 0),
-                    Rate = 50,
-                    Employees = new List<JobUserModel>()
-                    {
-                        new JobUserModel()
-                        {
-                            Employee = (EmployeeModel)UsersService.Get("employee@gmail.com"),
-                            Status = StatusEnum.WaitingForEmployee
-                        }
-                    }
+                    Rate = 60
+                },
+                new EmployerJobModel()
+                {
+                    Id = 4,
+                    Name = "Прибирання у квартирі",
+                    Description = "Потрібна людина для прибирання у квартирі",
+                    StartDate = DateTime.Now.AddDays(5),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
+                    JobType = new JobTypeModel() {Id = 2, Name = "Прибирання"},
+                    Duration = new TimeSpan(9, 0, 0),
+                    Rate = 40
+                },
+                new EmployerJobModel()
+                {
+                    Id = 5,
+                    Name = "Вигул тварин",
+                    Description = "Потрібна людина для прогулки з 3 доберманами",
+                    StartDate = DateTime.Now.AddDays(3),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
+                    JobType = new JobTypeModel() {Id = 3, Name = "Тварини"},
+                    Duration = new TimeSpan(1, 0, 0),
+                    Rate = 40
+                },
+                new EmployerJobModel()
+                {
+                    Id = 6,
+                    Name = "Догляд за тваринами",
+                    Description = "Потрібна людина для догляду кішки і рибок у час відсутності господарів",
+                    StartDate = DateTime.Now.AddDays(6),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
+                    JobType = new JobTypeModel() {Id = 3, Name = "Тварини"},
+                    Duration = new TimeSpan(8, 0, 0),
+                    Rate = 40
                 }
             };
         }

@@ -18,114 +18,88 @@ namespace Worker.Services
                 new EmployeeJobModel()
                 {
                     Id = 0,
-                    Description = "Посидіти з моєю дитиноюf kajsdkl;f;j skaldj fklsad jkl;f jksld;ajf klsdjalkfjsdkl;fjkl asdjkfl jew;kjfio jsdo;aj fk;jsd ;ofjweio;j f;ksdjakl fjsdaklj foewjoif jdsjk afkl;j ioewjfoi ewjafo jdskl;ajf kdsajf iowej pfjkdsj fkldsja fkjaofj weoipjf kjdsk ;fjk adsjfiewjpf ojsdklaj fklj",
-                    StartDate = DateTime.Now,
-                    Employer = (EmployerModel)UsersService.Get("employer@gmail.com"),
+                    Name = "Розвантаження судна",
+                    Description = "Потрібен чоловік для розвантаження пароплава в Одеському порті",
+                    StartDate = DateTime.Now.AddDays(5),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
                     JobType = new JobTypeModel() { Id = 0, Name = "Вантажні роботи" },
-                    Name = "Сидіти з дитиною",
-                    Status = StatusEnum.WaitingForEmployee,
-                    Duration = new TimeSpan(2, 0, 0),
-                    Rate = 50
+                    Duration = new TimeSpan(3, 0, 0),
+                    Rate = 50,
+                    Status = StatusEnum.WaitingForEmployee
                 },
                 new EmployeeJobModel()
                 {
                     Id = 1,
-                    Description = "Посидіти з моєю дитиноюf kajsdkl;f;j skaldj fklsad jkl;f jksld;ajf klsdjalkfjsdkl;fjkl asdjkfl jew;kjfio jsdo;aj fk;jsd ;ofjweio;j f;ksdjakl fjsdaklj foewjoif jdsjk afkl;j ioewjfoi ewjafo jdskl;ajf kdsajf iowej pfjkdsj fkldsja fkjaofj weoipjf kjdsk ;fjk adsjfiewjpf ojsdklaj fklj",
-                    StartDate = DateTime.Now,
-                    Employer = (EmployerModel)UsersService.Get("employer@gmail.com"),
+                    Name = "Перевезення і розвантаження продукції",
+                    Description = "Потрібна людина з машиною для доставки речей у нову квартиру",
+                    StartDate = DateTime.Now.AddDays(1),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
                     JobType = new JobTypeModel() { Id = 0, Name = "Вантажні роботи" },
-                    Name = "Сидіти з дитиною",
-                    Status = StatusEnum.WaitingForEmployee,
+                    Duration = new TimeSpan(8, 0, 0),
+                    Rate = 50,
+                    Status = StatusEnum.WaitingForEmployee
+                },
+                new EmployeeJobModel()
+                {
+                    Id = 2,
+                    Name = "Догляд за дітьми",
+                    Description = "Потрібна людина для догляду за 2 дітьми віку 8 і 10 років",
+                    StartDate = DateTime.Now.AddDays(2),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
+                    JobType = new JobTypeModel() {Id = 1, Name = "Діти"},
+                    Duration = new TimeSpan(4, 0, 0),
+                    Rate = 40,
+                    Status = StatusEnum.WaitingForEmployee
+                },
+                new EmployeeJobModel()
+                {
+                    Id = 3,
+                    Name = "Приватне навчання дітей на дому",
+                    Description = "Потрібен викладач для дитини віком 12 років з точних предметів",
+                    StartDate = DateTime.Now.AddDays(4),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
+                    JobType = new JobTypeModel() {Id = 1, Name = "Діти"},
                     Duration = new TimeSpan(2, 0, 0),
-                    Rate = 50
+                    Rate = 60,
+                    Status = StatusEnum.WaitingForEmployee
+                },
+                new EmployeeJobModel()
+                {
+                    Id = 4,
+                    Name = "Прибирання у квартирі",
+                    Description = "Потрібна людина для прибирання у квартирі",
+                    StartDate = DateTime.Now.AddDays(5),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
+                    JobType = new JobTypeModel() {Id = 2, Name = "Прибирання"},
+                    Duration = new TimeSpan(9, 0, 0),
+                    Rate = 40,
+                    Status = StatusEnum.WaitingForEmployee
+                },
+                new EmployeeJobModel()
+                {
+                    Id = 5,
+                    Name = "Вигул тварин",
+                    Description = "Потрібна людина для прогулки з 3 доберманами",
+                    StartDate = DateTime.Now.AddDays(3),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
+                    JobType = new JobTypeModel() {Id = 3, Name = "Тварини"},
+                    Duration = new TimeSpan(1, 0, 0),
+                    Rate = 40,
+                    Status = StatusEnum.WaitingForEmployee
+                },
+                new EmployeeJobModel()
+                {
+                    Id = 6,
+                    Name = "Догляд за тваринами",
+                    Description = "Потрібна людина для догляду кішки і рибок у час відсутності господарів",
+                    StartDate = DateTime.Now.AddDays(6),
+                    Employer = (EmployerModel)UsersService.Get("andriy@gmail.com"),
+                    JobType = new JobTypeModel() {Id = 3, Name = "Тварини"},
+                    Duration = new TimeSpan(8, 0, 0),
+                    Rate = 40,
+                    Status = StatusEnum.WaitingForEmployee
                 }
             };
-            /*{
-                new EmployeeJobModel() {Id = 0, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
-                    Employer = new EmployerModel()
-                    {
-                        AverageRating = 4,
-                        BirthDate = new DateTime(1985, 2, 4),
-                        City = "Львів",
-                        FirstName = "Іван",
-                        LastName = "Петренко",
-                        Phone = "094 12 12 4",
-                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
-                    }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.WaitingForEmployee, Duration = new TimeSpan(2, 0, 0), Rate = 50
-                },
-                new EmployeeJobModel() {Id = 1, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
-                    Employer = new EmployerModel()
-                    {
-                        AverageRating = 4,
-                        BirthDate = new DateTime(1985, 2, 4),
-                        City = "Львів",
-                        FirstName = "Іван",
-                        LastName = "Петренко",
-                        Phone = "094 12 12 4",
-                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
-                    }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.WaitingForEmployerConfirmation, Duration = new TimeSpan(2, 0, 0), Rate = 50
-                },
-                new EmployeeJobModel() {Id = 2, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
-                    Employer = new EmployerModel()
-                    {
-                        AverageRating = 4,
-                        BirthDate = new DateTime(1985, 2, 4),
-                        City = "Львів",
-                        FirstName = "Іван",
-                        LastName = "Петренко",
-                        Phone = "094 12 12 4",
-                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
-                    }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.WaitingForEmployeeConfirmation, Duration = new TimeSpan(2, 0, 0), Rate = 50
-                },
-                new EmployeeJobModel() {Id = 3, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
-                    Employer = new EmployerModel()
-                    {
-                        AverageRating = 4,
-                        BirthDate = new DateTime(1985, 2, 4),
-                        City = "Львів",
-                        FirstName = "Іван",
-                        LastName = "Петренко",
-                        Phone = "094 12 12 4",
-                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
-                    }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.RejectedByEmployer, Duration = new TimeSpan(2, 0, 0), Rate = 50
-                },
-                new EmployeeJobModel() {Id = 4, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
-                    Employer = new EmployerModel()
-                    {
-                        AverageRating = 4,
-                        BirthDate = new DateTime(1985, 2, 4),
-                        City = "Львів",
-                        FirstName = "Іван",
-                        LastName = "Петренко",
-                        Phone = "094 12 12 4",
-                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
-                    }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.RejectedByEmployee, Duration = new TimeSpan(2, 0, 0), Rate = 50
-                },
-                new EmployeeJobModel() {Id = 5, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
-                    Employer = new EmployerModel()
-                    {
-                        AverageRating = 4,
-                        BirthDate = new DateTime(1985, 2, 4),
-                        City = "Львів",
-                        FirstName = "Іван",
-                        LastName = "Петренко",
-                        Phone = "094 12 12 4",
-                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
-                    }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.InProgress, Duration = new TimeSpan(2, 0, 0), Rate = 50
-                },
-                new EmployeeJobModel() {Id = 6, Description = "Посидіти з моєю дитиною", StartDate = DateTime.Now,
-                    Employer = new EmployerModel()
-                    {
-                        AverageRating = 4,
-                        BirthDate = new DateTime(1985, 2, 4),
-                        City = "Львів",
-                        FirstName = "Іван",
-                        LastName = "Петренко",
-                        Phone = "094 12 12 4",
-                        Photo = ImageSource.FromUri(new Uri("https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"))
-                    }, JobType = new JobTypeModel() {Id = 0, Name = "Вантажні роботи"}, Name = "Сидіти з дитиною", Status = StatusEnum.Done, Duration = new TimeSpan(2, 0, 0), Rate = 50
-                }
-            };*/
         }
 
         public static void SetDefaultStatuses()
@@ -154,10 +128,14 @@ namespace Worker.Services
 
         public static IEnumerable<EmployeeJobModel> GetByJobTypes()
         {
-            return Jobs.Where(job => ((EmployeeModel)App.User).JobTypes.Find(j => j.Name == job.JobType.Name) != null);
+            return Jobs.Where(job => ((EmployeeModel)App.User).JobTypes.Find(j => j.Name == job.JobType.Name) != null && EmployerJobsService.Get(job.Id).IsLookingForNewEmployees);
         }
         public static List<EmployeeJobModel> GetNew()
         {
+            if (((EmployeeModel) App.User).IsVisible)
+            {
+                return new List<EmployeeJobModel>();
+            }
             return GetByJobTypes().Where(job => job.Status == StatusEnum.WaitingForEmployee).ToList();
         }
 

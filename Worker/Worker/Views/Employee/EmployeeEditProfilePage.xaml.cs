@@ -30,7 +30,8 @@ namespace Worker.Views.Employee
         private void OnSaveProfile(object sender, EventArgs e)
         {
             var userViewModel = (EmployeeViewModel)BindingContext;
-            App.User = Mapper.Map<EmployeeModel>(userViewModel);
+            var user = UsersService.Add(Mapper.Map<EmployeeModel>(userViewModel));
+            App.User = user;
             Navigation.PopAsync();
         }
 
