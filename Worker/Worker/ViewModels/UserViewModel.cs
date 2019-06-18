@@ -7,6 +7,11 @@ namespace Worker.ViewModels
 {
     public class UserViewModel : BaseViewModel
     {
+        public UserViewModel()
+        {
+            BirthDate = DateTime.Now;
+        }
+
         private int _id;
         public int Id
         {
